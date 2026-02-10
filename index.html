@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BLIK STUDIO</title>
@@ -7,210 +7,192 @@
 <style>
 body{
 margin:0;
-font-family:Arial, sans-serif;
-background:url('background.jpg') center/cover fixed;
+font-family:Helvetica, Arial, sans-serif;
 color:#111;
+background:white;
 }
 
-/* Центр страницы */
-.wrapper{
-max-width:520px;
-margin:20px auto;
-padding:15px;
-}
-
-/* Glass container */
-.container{
-background:rgba(255,255,255,0.82);
-backdrop-filter:blur(12px);
-border-radius:24px;
-border:2px solid rgba(0,0,0,0.8);
-padding:20px;
-box-shadow:0 20px 40px rgba(0,0,0,0.15);
-animation:fadeUp 1s ease;
-}
-
-/* Hero */
+/* HERO */
 .hero{
+height:95vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 text-align:center;
-margin-bottom:20px;
-}
-
-.logo{
-width:100%;
-max-height:420px;
-object-fit:contain;
-border-radius:12px;
-animation:fade 1.2s ease;
-}
-
-/* Кнопки */
-.btn{
-display:block;
-background:black;
+background:url("background.jpg") center/cover no-repeat;
 color:white;
-padding:16px;
-margin:10px 0;
-text-align:center;
-text-decoration:none;
-border-radius:10px;
-font-size:17px;
-transition:0.3s;
 }
 
-.btn:hover{
-transform:scale(1.03);
-box-shadow:0 10px 20px rgba(0,0,0,0.2);
+.hero img{
+width:220px;
+margin-bottom:20px;
+animation:fade 1s ease;
 }
 
-/* Языки */
-.lang-switch{
-text-align:center;
+.hero h1{
+letter-spacing:4px;
+margin:0;
+font-size:32px;
+}
+
+.hero p{
+opacity:0.8;
 margin:10px 0 20px;
 }
 
-.lang-switch button{
-padding:6px 10px;
-margin:3px;
-border:none;
+.btn{
 background:black;
 color:white;
-border-radius:6px;
-font-size:13px;
+padding:14px 30px;
+border-radius:30px;
+text-decoration:none;
+font-size:14px;
+letter-spacing:1px;
+display:inline-block;
+margin:5px;
 }
 
-/* Секции */
+/* SECTIONS */
 .section{
-background:rgba(255,255,255,0.95);
-padding:18px;
-margin-top:15px;
-border-radius:16px;
-box-shadow:0 10px 20px rgba(0,0,0,0.08);
+padding:40px 20px;
+max-width:520px;
+margin:auto;
 animation:fadeUp 1s ease;
 }
 
 .section h2{
-margin-top:0;
-border-bottom:1px solid #eee;
-padding-bottom:5px;
-letter-spacing:1px;
+text-align:center;
+margin-bottom:20px;
+letter-spacing:2px;
 }
 
-.price{
+/* SERVICES */
+.service{
 display:flex;
 justify-content:space-between;
-margin:6px 0;
-font-size:15px;
+padding:10px 0;
+border-bottom:1px solid #eee;
 }
 
-/* Отзывы */
+/* REVIEWS */
 .review{
-background:white;
+background:#f9f9f9;
 padding:10px;
-margin:8px 0;
-border-radius:10px;
-box-shadow:0 4px 8px rgba(0,0,0,0.05);
+border-radius:8px;
+margin-bottom:10px;
 }
 
-/* Footer */
-.footer{
-text-align:center;
-margin-top:20px;
-font-size:14px;
-color:#555;
+/* FORM */
+input, textarea{
+width:100%;
+padding:8px;
+margin-top:5px;
+border-radius:6px;
+border:1px solid #ccc;
 }
 
-/* Анимации */
+/* MAP */
+.map{
+border-radius:12px;
+overflow:hidden;
+}
+
+/* FLOATING WHATSAPP */
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:black;
+color:white;
+padding:12px 18px;
+border-radius:30px;
+text-decoration:none;
+box-shadow:0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* ANIMATIONS */
 @keyframes fade{
 from{opacity:0;}
 to{opacity:1;}
 }
 
 @keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(20px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
 }
 </style>
 </head>
 
 <body>
 
-<div class="wrapper">
-<div class="container">
+<!-- HERO -->
+<section class="hero">
+<img src="Logo.jpg">
+<h1>BLIK STUDIO</h1>
+<p>Brows & Lashes · Venray</p>
 
-<div class="hero">
-<img src="Logo.jpg" class="logo">
-</div>
-
-<a class="btn" href="https://calendar.app.google/c4vEniQTJLtWwp8VA" target="_blank" data-lang="book">
-ONLINE BOOKING
+<a class="btn" href="https://calendar.app.google/c4vEniQTJLtWwp8VA" target="_blank">
+BOOK ONLINE
 </a>
+</section>
 
-<a class="btn" href="https://wa.me/380979516397" target="_blank">
-WHATSAPP
-</a>
+<!-- SERVICES -->
+<section class="section">
+<h2>Services</h2>
 
-<div class="lang-switch">
-<button onclick="setLang('nl')">NL</button>
-<button onclick="setLang('en')">EN</button>
-<button onclick="setLang('ru')">RU</button>
-<button onclick="setLang('ua')">UA</button>
-<button onclick="setLang('pl')">PL</button>
-</div>
+<div class="service"><div>Brows correction</div><div>15€</div></div>
+<div class="service"><div>Brow tint</div><div>18€</div></div>
+<div class="service"><div>Correction + tint</div><div>25€</div></div>
+<div class="service"><div>Brow lamination</div><div>25€</div></div>
 
-<div class="section">
-<h2 data-lang="brows">Wenkbrauwen</h2>
-<div class="price"><span data-lang="corr">Correctie</span><span>15€</span></div>
-<div class="price"><span data-lang="color">Verven</span><span>18€</span></div>
-<div class="price"><span data-lang="corrcolor">Correctie + verven</span><span>25€</span></div>
-<div class="price"><span data-lang="lam">Laminatie</span><span>25€</span></div>
-</div>
+<div class="service"><div>Lash tint</div><div>15€</div></div>
+<div class="service"><div>Lash lamination</div><div>40€</div></div>
 
-<div class="section">
-<h2 data-lang="lashes">Wimpers</h2>
-<div class="price"><span data-lang="color">Verven</span><span>15€</span></div>
-<div class="price"><span data-lang="lam">Laminatie</span><span>40€</span></div>
-</div>
+<div class="service"><div>Extensions 1:1</div><div>45€</div></div>
+<div class="service"><div>2D / 3D</div><div>50€</div></div>
+<div class="service"><div>4D–6D</div><div>60€</div></div>
+<div class="service"><div>Removal</div><div>10€</div></div>
 
-<div class="section">
-<h2 data-lang="reviews">Reviews</h2>
+<div class="service"><div>Brows package</div><div>40€</div></div>
+<div class="service"><div>Brows + lashes</div><div>60€</div></div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section">
+<h2>Reviews</h2>
+
 <div id="reviewList"></div>
 
-<input id="name" placeholder="Name">
-<textarea id="text" placeholder="Write review"></textarea>
+<input id="name" placeholder="Your name">
+<textarea id="text" placeholder="Write your review"></textarea>
 <a class="btn" onclick="addReview()">Add review</a>
+</section>
+
+<!-- MAP -->
+<section class="section">
+<h2>Location</h2>
+
+<div class="map">
+<iframe
+src="https://maps.google.com/maps?q=Plataanstraat%2015%20Venray&t=&z=15&ie=UTF8&iwloc=&output=embed"
+width="100%" height="300" style="border:0;">
+</iframe>
 </div>
 
-<div class="footer">
-PLATAANSTRAAT 15<br>
-5802 EH VENRAY<br>
+<p style="text-align:center;margin-top:10px;">
+Plataanstraat 15 · Venray<br>
 +38 097 951 6397
-</div>
+</p>
 
-</div>
-</div>
+</section>
+
+<!-- FLOATING WHATSAPP -->
+<a class="whatsapp" href="https://wa.me/380979516397" target="_blank">
+WhatsApp
+</a>
 
 <script>
-const translations={
-nl:{book:"ONLINE BOEKEN",brows:"Wenkbrauwen",lashes:"Wimpers",corr:"Correctie",color:"Verven",corrcolor:"Correctie + verven",lam:"Laminatie",reviews:"Reviews"},
-en:{book:"BOOK ONLINE",brows:"Brows",lashes:"Lashes",corr:"Correction",color:"Coloring",corrcolor:"Correction + coloring",lam:"Lamination",reviews:"Reviews"},
-ru:{book:"ОНЛАЙН ЗАПИСЬ",brows:"Брови",lashes:"Ресницы",corr:"Коррекция",color:"Окрашивание",corrcolor:"Коррекция + окрашивание",lam:"Ламинирование",reviews:"Отзывы"},
-ua:{book:"ОНЛАЙН ЗАПИС",brows:"Брови",lashes:"Вії",corr:"Корекція",color:"Фарбування",corrcolor:"Корекція + фарбування",lam:"Ламінування",reviews:"Відгуки"},
-pl:{book:"REZERWACJA ONLINE",brows:"Brwi",lashes:"Rzęsy",corr:"Korekta",color:"Farbowanie",corrcolor:"Korekta + farbowanie",lam:"Laminacja",reviews:"Opinie"}
-};
-
-function setLang(lang){
-document.querySelectorAll("[data-lang]").forEach(el=>{
-el.innerText=translations[lang][el.dataset.lang];
-});
-}
-
 function addReview(){
 let name=document.getElementById("name").value;
 let text=document.getElementById("text").value;
@@ -220,6 +202,7 @@ let reviews=JSON.parse(localStorage.getItem("reviews")||"[]");
 reviews.push({name,text});
 localStorage.setItem("reviews",JSON.stringify(reviews));
 showReviews();
+
 document.getElementById("name").value="";
 document.getElementById("text").value="";
 }
