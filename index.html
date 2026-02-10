@@ -9,7 +9,7 @@ body{
 margin:0;
 font-family:Helvetica, Arial, sans-serif;
 color:#111;
-background:white;
+background:url("background.jpg") center/cover fixed no-repeat;
 }
 
 /* HERO */
@@ -20,64 +20,65 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-background:url("background.jpg") center/cover no-repeat;
-color:white;
 }
 
-.hero img{
-width:220px;
-margin-bottom:20px;
-animation:fade 1s ease;
+.logo{
+width:260px;
+margin-bottom:40px;
 }
 
-.hero h1{
-letter-spacing:4px;
-margin:0;
-font-size:32px;
-}
-
-.hero p{
-opacity:0.8;
-margin:10px 0 20px;
-}
-
+/* BUTTON */
 .btn{
 background:black;
 color:white;
-padding:14px 30px;
+padding:16px 32px;
 border-radius:30px;
 text-decoration:none;
 font-size:14px;
 letter-spacing:1px;
-display:inline-block;
-margin:5px;
 }
 
-/* SECTIONS */
+/* LANGUAGE */
+.lang{
+margin-top:20px;
+}
+.lang button{
+margin:3px;
+padding:6px 10px;
+border:none;
+background:black;
+color:white;
+border-radius:6px;
+font-size:12px;
+}
+
+/* CONTENT BLOCK */
 .section{
-padding:40px 20px;
+background:white;
 max-width:520px;
-margin:auto;
-animation:fadeUp 1s ease;
+margin:40px auto;
+padding:25px;
+border-radius:14px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
 }
 
 .section h2{
 text-align:center;
-margin-bottom:20px;
-letter-spacing:2px;
+margin-bottom:15px;
+letter-spacing:1px;
 }
 
-/* SERVICES */
 .service{
 display:flex;
 justify-content:space-between;
-padding:10px 0;
+padding:8px 0;
 border-bottom:1px solid #eee;
+font-size:15px;
 }
 
 /* REVIEWS */
 .review{
-background:#f9f9f9;
+background:#f5f5f5;
 padding:10px;
 border-radius:8px;
 margin-bottom:10px;
@@ -87,18 +88,12 @@ margin-bottom:10px;
 input, textarea{
 width:100%;
 padding:8px;
-margin-top:5px;
+margin-top:6px;
 border-radius:6px;
 border:1px solid #ccc;
 }
 
-/* MAP */
-.map{
-border-radius:12px;
-overflow:hidden;
-}
-
-/* FLOATING WHATSAPP */
+/* WHATSAPP */
 .whatsapp{
 position:fixed;
 bottom:20px;
@@ -110,84 +105,77 @@ border-radius:30px;
 text-decoration:none;
 box-shadow:0 10px 20px rgba(0,0,0,0.3);
 }
-
-/* ANIMATIONS */
-@keyframes fade{
-from{opacity:0;}
-to{opacity:1;}
-}
-
-@keyframes fadeUp{
-from{opacity:0; transform:translateY(20px);}
-to{opacity:1; transform:translateY(0);}
-}
 </style>
 </head>
 
 <body>
 
 <!-- HERO -->
-<section class="hero">
-<img src="Logo.jpg">
-<h1>BLIK STUDIO</h1>
-<p>Brows & Lashes · Venray</p>
+<div class="hero">
+<img src="Logo.png" class="logo">
 
 <a class="btn" href="https://calendar.app.google/c4vEniQTJLtWwp8VA" target="_blank">
 BOOK ONLINE
 </a>
-</section>
 
-<!-- SERVICES -->
-<section class="section">
-<h2>Services</h2>
+<div class="lang">
+<button onclick="setLang('nl')">NL</button>
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('ru')">RU</button>
+<button onclick="setLang('ua')">UA</button>
+<button onclick="setLang('pl')">PL</button>
+</div>
+</div>
 
-<div class="service"><div>Brows correction</div><div>15€</div></div>
-<div class="service"><div>Brow tint</div><div>18€</div></div>
-<div class="service"><div>Correction + tint</div><div>25€</div></div>
-<div class="service"><div>Brow lamination</div><div>25€</div></div>
+<!-- BROWS -->
+<div class="section">
+<h2 data-lang="brows">Brows</h2>
 
-<div class="service"><div>Lash tint</div><div>15€</div></div>
-<div class="service"><div>Lash lamination</div><div>40€</div></div>
+<div class="service"><span data-lang="b1">Correction</span><span>15€</span></div>
+<div class="service"><span data-lang="b2">Tint</span><span>18€</span></div>
+<div class="service"><span data-lang="b3">Correction + tint</span><span>25€</span></div>
+<div class="service"><span data-lang="b4">Lamination</span><span>25€</span></div>
+</div>
 
-<div class="service"><div>Extensions 1:1</div><div>45€</div></div>
-<div class="service"><div>2D / 3D</div><div>50€</div></div>
-<div class="service"><div>4D–6D</div><div>60€</div></div>
-<div class="service"><div>Removal</div><div>10€</div></div>
+<!-- LASHES -->
+<div class="section">
+<h2 data-lang="lashes">Lashes</h2>
 
-<div class="service"><div>Brows package</div><div>40€</div></div>
-<div class="service"><div>Brows + lashes</div><div>60€</div></div>
-</section>
+<div class="service"><span data-lang="l1">Tint</span><span>15€</span></div>
+<div class="service"><span data-lang="l2">Lamination</span><span>40€</span></div>
+</div>
+
+<!-- EXTENSIONS -->
+<div class="section">
+<h2 data-lang="ext">Extensions</h2>
+
+<div class="service"><span>1:1</span><span>45€</span></div>
+<div class="service"><span>2D / 3D</span><span>50€</span></div>
+<div class="service"><span>4D–6D</span><span>60€</span></div>
+<div class="service"><span data-lang="remove">Removal</span><span>10€</span></div>
+</div>
+
+<!-- PACKAGES -->
+<div class="section">
+<h2 data-lang="pack">Packages</h2>
+
+<div class="service"><span data-lang="p1">Brows full package</span><span>40€</span></div>
+<div class="service"><span data-lang="p2">Brows + lashes lamination</span><span>60€</span></div>
+<div class="service"><span data-lang="p3">Brows + lashes tint</span><span>35€</span></div>
+</div>
 
 <!-- REVIEWS -->
-<section class="section">
-<h2>Reviews</h2>
+<div class="section">
+<h2 data-lang="reviews">Reviews</h2>
 
 <div id="reviewList"></div>
 
-<input id="name" placeholder="Your name">
-<textarea id="text" placeholder="Write your review"></textarea>
-<a class="btn" onclick="addReview()">Add review</a>
-</section>
-
-<!-- MAP -->
-<section class="section">
-<h2>Location</h2>
-
-<div class="map">
-<iframe
-src="https://maps.google.com/maps?q=Plataanstraat%2015%20Venray&t=&z=15&ie=UTF8&iwloc=&output=embed"
-width="100%" height="300" style="border:0;">
-</iframe>
+<input id="name" placeholder="Name">
+<textarea id="text" placeholder="Your review"></textarea>
+<a class="btn" onclick="addReview()">Send</a>
 </div>
 
-<p style="text-align:center;margin-top:10px;">
-Plataanstraat 15 · Venray<br>
-+38 097 951 6397
-</p>
-
-</section>
-
-<!-- FLOATING WHATSAPP -->
+<!-- WHATSAPP -->
 <a class="whatsapp" href="https://wa.me/380979516397" target="_blank">
 WhatsApp
 </a>
@@ -202,7 +190,6 @@ let reviews=JSON.parse(localStorage.getItem("reviews")||"[]");
 reviews.push({name,text});
 localStorage.setItem("reviews",JSON.stringify(reviews));
 showReviews();
-
 document.getElementById("name").value="";
 document.getElementById("text").value="";
 }
@@ -216,6 +203,26 @@ list.innerHTML+=`<div class="review"><b>${r.name}</b><br>${r.text}</div>`;
 });
 }
 showReviews();
+
+/* LANGUAGES */
+function setLang(lang){
+const t={
+ru:{brows:"Брови",lashes:"Ресницы",ext:"Наращивание",pack:"Комплексы",reviews:"Отзывы",
+b1:"Коррекция",b2:"Окрашивание",b3:"Коррекция + окрашивание",b4:"Ламинирование",
+l1:"Окрашивание",l2:"Ламинирование",remove:"Снятие",
+p1:"Ламинирование + коррекция + окрашивание",p2:"Ламинирование бровей + ресниц",p3:"Окрашивание бровей + ресниц"},
+
+ua:{brows:"Брови",lashes:"Вії",ext:"Нарощування",pack:"Комплекси",reviews:"Відгуки",
+b1:"Корекція",b2:"Фарбування",b3:"Корекція + фарбування",b4:"Ламінування",
+l1:"Фарбування",l2:"Ламінування",remove:"Зняття",
+p1:"Ламінування + корекція + фарбування",p2:"Ламінування брів + вій",p3:"Фарбування брів + вій"}
+};
+
+document.querySelectorAll("[data-lang]").forEach(el=>{
+let key=el.getAttribute("data-lang");
+if(t[lang] && t[lang][key]) el.innerText=t[lang][key];
+});
+}
 </script>
 
 </body>
