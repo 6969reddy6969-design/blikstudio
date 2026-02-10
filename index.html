@@ -13,7 +13,7 @@
 body{
     min-height:100vh;
     font-family:'Montserrat',sans-serif;
-    background:url('Fon') no-repeat center center;
+    background:url('Fon.jpg') no-repeat center center;
     background-size:cover;
     display:flex;
     justify-content:center;
@@ -66,9 +66,7 @@ h1{
     font-size:15px;
     text-decoration:none;
     color:#000;
-    transition:0.3s;
 }
-.item:hover{transform:scale(1.03);}
 .item img{width:24px;}
 
 /* Кнопки */
@@ -124,20 +122,20 @@ h1{
 <h1 id="title">Контакты</h1>
 
 <a href="https://instagram.com/blikstudio_venray" class="item" target="_blank">
-<img src="Instagram"> blikstudio_venray
+<img src="Instagram.jpg"> blikstudio_venray
 </a>
 
 <a href="https://facebook.com" class="item" target="_blank">
-<img src="Facebook"> Blikstudio Venray
+<img src="Facebook.jpg"> Blikstudio Venray
 </a>
 
 <a href="https://wa.me/31684553243" class="item" target="_blank">
-<img src="Whatsapp"> +31684553243
+<img src="Whatsapp.jpg"> +31684553243
 </a>
 
 <div class="item">
-<img src="Mail">
-<span> </span>
+<img src="Mail.jpg">
+<span></span>
 </div>
 
 <button class="btn" onclick="showPage('price')" id="priceBtn">Прайс лист</button>
@@ -145,36 +143,35 @@ h1{
 
 <!-- ПРАЙС -->
 <div id="price" class="page">
-
 <h1>BLIK STUDIO</h1>
 
 <div class="section">
-<div class="section-title">Брови</div>
-<div class="row"><span>Коррекция (воск/пинцет)</span><span>15€</span></div>
-<div class="row"><span>Окрашивание</span><span>18€</span></div>
-<div class="row"><span>Коррекция + окрашивание</span><span>25€</span></div>
-<div class="row"><span>Ламинирование</span><span>25€</span></div>
+<div class="section-title">Brows</div>
+<div class="row"><span>Correction</span><span>15€</span></div>
+<div class="row"><span>Coloring</span><span>18€</span></div>
+<div class="row"><span>Correction + coloring</span><span>25€</span></div>
+<div class="row"><span>Lamination</span><span>25€</span></div>
 </div>
 
 <div class="section">
-<div class="section-title">Ресницы</div>
-<div class="row"><span>Окрашивание</span><span>15€</span></div>
-<div class="row"><span>Ламинирование</span><span>40€</span></div>
+<div class="section-title">Lashes</div>
+<div class="row"><span>Coloring</span><span>15€</span></div>
+<div class="row"><span>Lamination</span><span>40€</span></div>
 </div>
 
 <div class="section">
-<div class="section-title">Наращивание</div>
-<div class="row"><span>Классика 1:1</span><span>45€</span></div>
+<div class="section-title">Extensions</div>
+<div class="row"><span>Classic 1:1</span><span>45€</span></div>
 <div class="row"><span>2D / 3D</span><span>50€</span></div>
 <div class="row"><span>4D / 5D / 6D</span><span>60€</span></div>
-<div class="row"><span>Снятие</span><span>10€</span></div>
+<div class="row"><span>Removal</span><span>10€</span></div>
 </div>
 
 <div class="section">
-<div class="section-title">Комплекс</div>
-<div class="row"><span>Ламинирование + коррекция + окрашивание бровей</span><span>40€</span></div>
-<div class="row"><span>Ламинирование бровей + ресниц</span><span>60€</span></div>
-<div class="row"><span>Окрашивание бровей + ресниц</span><span>35€</span></div>
+<div class="section-title">Packages</div>
+<div class="row"><span>Brow lamination + correction + color</span><span>40€</span></div>
+<div class="row"><span>Brow + lash lamination</span><span>60€</span></div>
+<div class="row"><span>Brow + lash coloring</span><span>35€</span></div>
 </div>
 
 <div class="address">
@@ -183,15 +180,14 @@ PLATAANSTRAAT 15 5802 EH VENRAY
 </div>
 
 <button class="btn" onclick="showPage('home')" id="backBtn">Назад</button>
-
 </div>
 
 </div>
 
 <script>
 function showPage(id){
-    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById(id).classList.add('active');
 }
 
 const texts={
@@ -203,9 +199,9 @@ ua:{title:"Контакти",price:"Прайс",back:"Назад"}
 };
 
 function setLang(lang){
-    document.getElementById("title").innerText=texts[lang].title;
-    document.getElementById("priceBtn").innerText=texts[lang].price;
-    document.getElementById("backBtn").innerText=texts[lang].back;
+document.getElementById("title").innerText=texts[lang].title;
+document.getElementById("priceBtn").innerText=texts[lang].price;
+document.getElementById("backBtn").innerText=texts[lang].back;
 }
 </script>
 
