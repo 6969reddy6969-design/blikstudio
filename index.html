@@ -29,7 +29,7 @@ backdrop-filter:blur(3px);
 z-index:-1;
 }
 
-/* language */
+/* Languages */
 .lang{
 position:fixed;
 top:15px;
@@ -102,7 +102,7 @@ border-radius:12px;
 font-size:14px;
 }
 
-/* price */
+/* Price */
 .section{margin:18px 0;}
 .section-title{
 border-bottom:1px solid #000;
@@ -116,7 +116,7 @@ font-size:14px;
 margin:4px 0;
 }
 
-/* WhatsApp floating */
+/* Floating WhatsApp */
 .whatsapp-float{
 position:fixed;
 right:18px;
@@ -183,7 +183,7 @@ height:32px;
 <div id="booking" class="page">
 <h1 id="bookingTitle"></h1>
 
-<a href="https://wa.me/31684553243" class="btn" target="_blank">WHATSAPP</a>
+<a id="waLink" class="btn" target="_blank">WHATSAPP</a>
 <a href="https://instagram.com/blikstudio_venray" class="btn" target="_blank">INSTAGRAM</a>
 <a href="https://facebook.com/" class="btn" target="_blank">FACEBOOK</a>
 
@@ -230,14 +230,13 @@ PLATAANSTRAAT 15 5802 EH VENRAY
 </div>
 
 <button class="btn" onclick="showPage('home')" id="backBtn"></button>
-
 </div>
 
 <!-- MAP -->
 <div id="map" class="page">
-<h1 id="mapTitle"></h1>
+<h1>GOOGLE</h1>
 
-<a href="https://share.google/KJYIucArFn30dgOKE" class="btn" target="_blank" id="openGoogle"></a>
+<a href="https://share.google/KJYIucArFn30dgOKE" class="btn" target="_blank">OPEN PROFILE</a>
 
 <iframe src="https://maps.google.com/maps?q=Plataanstraat%2015%205802%20EH%20Venray&output=embed"
 width="100%" height="260" style="border:0;border-radius:12px;margin-top:10px;"></iframe>
@@ -249,24 +248,38 @@ width="100%" height="260" style="border:0;border-radius:12px;margin-top:10px;"><
 </div>
 
 <!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/31684553243" class="whatsapp-float" target="_blank">
+<a id="waFloat" class="whatsapp-float" target="_blank">
 <img src="Whatsapp.jpg">
 </a>
 
 <script>
+
 function showPage(id){
 document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
 document.getElementById(id).classList.add('active');
 }
 
-/* translations */
+/* Messages for WhatsApp */
+const waText={
+ua:"Доброго дня, хочу записатися",
+ru:"Здравствуйте, хочу записаться",
+en:"Hello, I would like to book an appointment",
+pl:"Dzień dobry, chcę się zapisać",
+nl:"Hallo, ik wil een afspraak maken"
+};
+
+/* Translations (buttons) */
 const t={
-ua:{contact:"КОНТАКТИ",price:"ПРАЙС",map:"ВІДГУКИ ТА КАРТА",book:"ЗАПИСАТИСЯ",booking:"ОБЕРІТЬ СПОСІБ ЗАПИСУ",back:"НАЗАД",open:"ВІДКРИТИ ПРОФІЛЬ",prepay:"ЗАПИС ЗДІЙСНЮЄТЬСЯ ПО ПЕРЕДОПЛАТІ",brows:"БРОВИ",b1:"КОРЕКЦІЯ (ВІСК / ПІНЦЕТ)",b2:"ФАРБУВАННЯ",b3:"КОРЕКЦІЯ + ФАРБУВАННЯ",b4:"ЛАМІНУВАННЯ",lashes:"ВІЇ",l1:"ФАРБУВАННЯ",l2:"ЛАМІНУВАННЯ",ext:"НАРОЩУВАННЯ ВІЙ",e1:"КЛАСИКА 1:1",e2:"2D / 3D",e3:"4D / 5D / 6D",e4:"ЗНЯТТЯ",combo:"КОМПЛЕКСНІ ПРОЦЕДУРИ",c1:"ЛАМІНУВАННЯ + КОРЕКЦІЯ + ФАРБУВАННЯ БРІВ",c2:"ЛАМІНУВАННЯ БРІВ + ВІЙ",c3:"ФАРБУВАННЯ БРІВ + ВІЙ"},
-ru:{contact:"КОНТАКТЫ",price:"ПРАЙС",map:"ОТЗЫВЫ И КАРТА",book:"ЗАПИСАТЬСЯ",booking:"ВЫБЕРИТЕ СПОСОБ ЗАПИСИ",back:"НАЗАД",open:"ОТКРЫТЬ ПРОФИЛЬ",prepay:"ЗАПИСЬ ПО ПРЕДОПЛАТЕ",brows:"БРОВИ",b1:"КОРРЕКЦИЯ",b2:"ОКРАШИВАНИЕ",b3:"КОРРЕКЦИЯ + ОКРАШИВАНИЕ",b4:"ЛАМИНИРОВАНИЕ",lashes:"РЕСНИЦЫ",l1:"ОКРАШИВАНИЕ",l2:"ЛАМИНИРОВАНИЕ",ext:"НАРАЩИВАНИЕ",e1:"КЛАССИКА",e2:"2D / 3D",e3:"4D / 5D / 6D",e4:"СНЯТИЕ",combo:"КОМПЛЕКС",c1:"ЛАМИНИРОВАНИЕ + КОРРЕКЦИЯ + ОКРАШИВАНИЕ",c2:"ЛАМИНИРОВАНИЕ БРОВЕЙ + РЕСНИЦ",c3:"ОКРАШИВАНИЕ БРОВЕЙ + РЕСНИЦ"}
+ua:{contact:"КОНТАКТИ",price:"ПРАЙС",map:"ВІДГУКИ ТА КАРТА",book:"ЗАПИСАТИСЯ",booking:"ОБЕРІТЬ СПОСІБ ЗАПИСУ",back:"НАЗАД",prepay:"ЗАПИС ЗДІЙСНЮЄТЬСЯ ПО ПЕРЕДОПЛАТІ"},
+ru:{contact:"КОНТАКТЫ",price:"ПРАЙС",map:"ОТЗЫВЫ И КАРТА",book:"ЗАПИСАТЬСЯ",booking:"ВЫБЕРИТЕ СПОСОБ ЗАПИСИ",back:"НАЗАД",prepay:"ЗАПИСЬ ПО ПРЕДОПЛАТЕ"},
+en:{contact:"CONTACT",price:"PRICE",map:"REVIEWS & MAP",book:"BOOK NOW",booking:"CHOOSE BOOKING METHOD",back:"BACK",prepay:"BOOKING REQUIRES PREPAYMENT"},
+pl:{contact:"KONTAKT",price:"CENNIK",map:"OPINIE I MAPA",book:"UMÓW SIĘ",booking:"WYBIERZ SPOSÓB REZERWACJI",back:"WRÓĆ",prepay:"REZERWACJA WYMAGA PRZEDPŁATY"},
+nl:{contact:"CONTACT",price:"PRIJS",map:"REVIEWS & MAP",book:"AFSPRAAK",booking:"KIES BOEKINGSOPTIE",back:"TERUG",prepay:"AFSPRAAK MET AANBETALING"}
 };
 
 function setLang(lang,btn){
 localStorage.setItem("lang",lang);
+
 document.querySelectorAll('.lang button').forEach(b=>b.classList.remove('active'));
 if(btn) btn.classList.add('active');
 
@@ -280,26 +293,13 @@ bookingTitle.innerText=L.booking;
 backBtn.innerText=L.back;
 backBtn2.innerText=L.back;
 backBtn3.innerText=L.back;
-openGoogle.innerText=L.open;
 prepayNote.innerText=L.prepay;
 
-brows_title.innerText=L.brows;
-b1.innerText=L.b1;
-b2.innerText=L.b2;
-b3.innerText=L.b3;
-b4.innerText=L.b4;
-lashes_title.innerText=L.lashes;
-l1.innerText=L.l1;
-l2.innerText=L.l2;
-ext_title.innerText=L.ext;
-e1.innerText=L.e1;
-e2.innerText=L.e2;
-e3.innerText=L.e3;
-e4.innerText=L.e4;
-combo_title.innerText=L.combo;
-c1.innerText=L.c1;
-c2.innerText=L.c2;
-c3.innerText=L.c3;
+/* WhatsApp links */
+let text=encodeURIComponent(waText[lang]);
+let link="https://wa.me/31684553243?text="+text;
+waFloat.href=link;
+waLink.href=link;
 }
 
 window.onload=function(){
