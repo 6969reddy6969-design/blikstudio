@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BLIK STUDIO</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -29,7 +29,7 @@ backdrop-filter:blur(3px);
 z-index:-1;
 }
 
-/* languages */
+/* Languages */
 .lang{
 position:fixed;
 top:15px;
@@ -52,7 +52,7 @@ opacity:.4;
 .wrapper{
 width:100%;
 max-width:420px;
-padding:80px 15px 30px;
+padding:80px 15px 40px;
 text-align:center;
 }
 
@@ -73,36 +73,23 @@ padding:25px;
 
 h1{margin-bottom:15px;}
 
-/* table price */
-.section{
-margin:18px 0;
-}
-
-.section-title{
-border-bottom:1px solid #000;
-margin-bottom:8px;
-font-weight:600;
-}
-
-.row{
+.item{
 display:flex;
-justify-content:space-between;
+align-items:center;
 gap:10px;
+margin:10px 0;
+text-decoration:none;
+color:#000;
 font-size:14px;
-margin:4px 0;
+}
+.item img{width:22px;}
+
+.note{
+margin:15px 0 5px;
+font-size:12px;
+opacity:0.7;
 }
 
-.row span:first-child{
-text-align:left;
-flex:1;
-}
-
-.row span:last-child{
-min-width:45px;
-text-align:right;
-}
-
-/* buttons */
 .btn{
 width:100%;
 padding:12px;
@@ -113,6 +100,25 @@ border:none;
 border-radius:12px;
 font-size:14px;
 }
+
+/* Price */
+.section{margin:18px 0;}
+
+.section-title{
+border-bottom:1px solid #000;
+margin-bottom:8px;
+font-weight:600;
+}
+
+.row{
+display:flex;
+justify-content:space-between;
+font-size:14px;
+margin:4px 0;
+gap:10px;
+}
+.row span:first-child{flex:1;text-align:left;}
+.row span:last-child{min-width:45px;text-align:right;}
 </style>
 </head>
 
@@ -127,18 +133,40 @@ font-size:14px;
 </div>
 
 <div class="wrapper">
+
 <img src="Logotip.jpg" class="logo">
 
 <div class="box">
 
+<!-- HOME -->
+<div id="home" class="page active">
+<h1 id="contactTitle">КОНТАКТИ</h1>
+
+<a href="https://instagram.com/blikstudio_venray" class="item">
+<img src="Instagram.jpg"> BLIKSTUDIO_VENRAY
+</a>
+
+<a href="#" class="item">
+<img src="Facebook.jpg"> BLIKSTUDIO VENRAY
+</a>
+
+<a href="https://wa.me/31684553243" class="item">
+<img src="Whatsapp.jpg"> +31684553243
+</a>
+
+<div class="note" id="prepayNote"></div>
+
+<button class="btn" onclick="showPage('price')" id="priceBtn"></button>
+<button class="btn" onclick="showPage('map')" id="mapBtn"></button>
+</div>
+
 <!-- PRICE -->
-<div id="price" class="page active">
+<div id="price" class="page">
 
 <h1>BLIK STUDIO</h1>
 
 <div class="section">
 <div class="section-title" id="brows_title"></div>
-
 <div class="row"><span id="b1"></span><span>15€</span></div>
 <div class="row"><span id="b2"></span><span>18€</span></div>
 <div class="row"><span id="b3"></span><span>25€</span></div>
@@ -147,14 +175,12 @@ font-size:14px;
 
 <div class="section">
 <div class="section-title" id="lashes_title"></div>
-
 <div class="row"><span id="l1"></span><span>15€</span></div>
 <div class="row"><span id="l2"></span><span>40€</span></div>
 </div>
 
 <div class="section">
 <div class="section-title" id="ext_title"></div>
-
 <div class="row"><span id="e1"></span><span>45€</span></div>
 <div class="row"><span id="e2"></span><span>50€</span></div>
 <div class="row"><span id="e3"></span><span>60€</span></div>
@@ -163,7 +189,6 @@ font-size:14px;
 
 <div class="section">
 <div class="section-title" id="combo_title"></div>
-
 <div class="row"><span id="c1"></span><span>40€</span></div>
 <div class="row"><span id="c2"></span><span>60€</span></div>
 <div class="row"><span id="c3"></span><span>35€</span></div>
@@ -174,135 +199,72 @@ font-size:14px;
 PLATAANSTRAAT 15 5802 EH VENRAY
 </div>
 
+<button class="btn" onclick="showPage('home')" id="backBtn"></button>
 </div>
+
+<!-- MAP -->
+<div id="map" class="page">
+
+<h1 id="mapTitle">GOOGLE</h1>
+
+<a href="https://share.google/KJYIucArFn30dgOKE" class="btn" target="_blank" id="openGoogle"></a>
+
+<iframe src="https://maps.google.com/maps?q=Plataanstraat%2015%205802%20EH%20Venray&output=embed"
+width="100%" height="260" style="border:0;border-radius:12px;margin-top:10px;"></iframe>
+
+<button class="btn" onclick="showPage('home')" id="backBtn2"></button>
+</div>
+
 </div>
 </div>
 
 <script>
 
-const t = {
+function showPage(id){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+}
 
+const t={
 ua:{
+contact:"КОНТАКТИ",
+price:"ПРАЙС",
+map:"ВІДГУКИ ТА КАРТА",
+back:"НАЗАД",
+open:"ВІДКРИТИ ПРОФІЛЬ",
+prepay:"ЗАПИС ЗДІЙСНЮЄТЬСЯ ПО ПЕРЕДОПЛАТІ",
 brows:"БРОВИ",
 b1:"КОРЕКЦІЯ (ВІСК / ПІНЦЕТ)",
 b2:"ФАРБУВАННЯ",
 b3:"КОРЕКЦІЯ + ФАРБУВАННЯ",
 b4:"ЛАМІНУВАННЯ",
-
 lashes:"ВІЇ",
 l1:"ФАРБУВАННЯ",
 l2:"ЛАМІНУВАННЯ",
-
 ext:"НАРОЩУВАННЯ ВІЙ",
 e1:"КЛАСИКА 1:1",
 e2:"2D / 3D",
 e3:"4D / 5D / 6D",
-e4:"ЗНЯТТЯ ВІЙ",
-
+e4:"ЗНЯТТЯ",
 combo:"КОМПЛЕКСНІ ПРОЦЕДУРИ",
 c1:"ЛАМІНУВАННЯ + КОРЕКЦІЯ + ФАРБУВАННЯ БРІВ",
 c2:"ЛАМІНУВАННЯ БРІВ + ВІЙ",
 c3:"ФАРБУВАННЯ БРІВ + ВІЙ"
-},
-
-ru:{
-brows:"БРОВИ",
-b1:"КОРРЕКЦИЯ (ВОСК / ПИНЦЕТ)",
-b2:"ОКРАШИВАНИЕ",
-b3:"КОРРЕКЦИЯ + ОКРАШИВАНИЕ",
-b4:"ЛАМИНИРОВАНИЕ",
-
-lashes:"РЕСНИЦЫ",
-l1:"ОКРАШИВАНИЕ",
-l2:"ЛАМИНИРОВАНИЕ",
-
-ext:"НАРАЩИВАНИЕ РЕСНИЦ",
-e1:"КЛАССИКА 1:1",
-e2:"2D / 3D",
-e3:"4D / 5D / 6D",
-e4:"СНЯТИЕ",
-
-combo:"КОМПЛЕКСНЫЕ ПРОЦЕДУРЫ",
-c1:"ЛАМИНИРОВАНИЕ + КОРРЕКЦИЯ + ОКРАШИВАНИЕ БРОВЕЙ",
-c2:"ЛАМИНИРОВАНИЕ БРОВЕЙ + РЕСНИЦ",
-c3:"ОКРАШИВАНИЕ БРОВЕЙ + РЕСНИЦ"
-},
-
-en:{
-brows:"BROWS",
-b1:"CORRECTION (WAX / TWEEZERS)",
-b2:"COLORING",
-b3:"CORRECTION + COLORING",
-b4:"LAMINATION",
-
-lashes:"LASHES",
-l1:"COLORING",
-l2:"LAMINATION",
-
-ext:"LASH EXTENSIONS",
-e1:"CLASSIC 1:1",
-e2:"2D / 3D",
-e3:"4D / 5D / 6D",
-e4:"REMOVAL",
-
-combo:"COMBO SERVICES",
-c1:"LAMINATION + CORRECTION + COLORING",
-c2:"BROWS + LASHES LAMINATION",
-c3:"BROWS + LASHES COLORING"
-},
-
-pl:{
-brows:"BRWI",
-b1:"KOREKTA (WOSK / PĘSETA)",
-b2:"FARBOWANIE",
-b3:"KOREKTA + FARBOWANIE",
-b4:"LAMINACJA",
-
-lashes:"RZĘSY",
-l1:"FARBOWANIE",
-l2:"LAMINACJA",
-
-ext:"PRZEDŁUŻANIE RZĘS",
-e1:"KLASYKA 1:1",
-e2:"2D / 3D",
-e3:"4D / 5D / 6D",
-e4:"USUWANIE",
-
-combo:"ZESTAWY",
-c1:"LAMINACJA + KOREKTA + FARBOWANIE BRWI",
-c2:"LAMINACJA BRWI + RZĘS",
-c3:"FARBOWANIE BRWI + RZĘS"
-},
-
-nl:{
-brows:"WENKBRAUWEN",
-b1:"CORRECTIE (WAX / PINCET)",
-b2:"VERVEN",
-b3:"CORRECTIE + VERVEN",
-b4:"LAMINEREN",
-
-lashes:"WIMPERS",
-l1:"VERVEN",
-l2:"LAMINEREN",
-
-ext:"WIMPEREXTENSIONS",
-e1:"CLASSIC 1:1",
-e2:"2D / 3D",
-e3:"4D / 5D / 6D",
-e4:"VERWIJDEREN",
-
-combo:"COMBINATIES",
-c1:"LAMINEREN + CORRECTIE + VERVEN",
-c2:"WENKBRAUWEN + WIMPERS",
-c3:"VERVEN WENKBRAUWEN + WIMPERS"
 }
-
 };
 
 function setLang(lang,btn){
 localStorage.setItem("lang",lang);
 document.querySelectorAll('.lang button').forEach(b=>b.classList.remove('active'));
-btn.classList.add('active');
+if(btn) btn.classList.add('active');
+
+document.getElementById("contactTitle").innerText=t[lang].contact;
+document.getElementById("priceBtn").innerText=t[lang].price;
+document.getElementById("mapBtn").innerText=t[lang].map;
+document.getElementById("backBtn").innerText=t[lang].back;
+document.getElementById("backBtn2").innerText=t[lang].back;
+document.getElementById("openGoogle").innerText=t[lang].open;
+document.getElementById("prepayNote").innerText=t[lang].prepay;
 
 document.getElementById("brows_title").innerText=t[lang].brows;
 document.getElementById("b1").innerText=t[lang].b1;
@@ -328,8 +290,9 @@ document.getElementById("c3").innerText=t[lang].c3;
 
 window.onload=function(){
 let lang=localStorage.getItem("lang") || "ua";
-setLang(lang,document.querySelectorAll('.lang button')[4]);
+setLang(lang);
 }
+
 </script>
 
 </body>
