@@ -12,35 +12,61 @@ background:url('background.jpg') center/cover fixed;
 color:#111;
 }
 
+/* Центр страницы */
 .wrapper{
 max-width:520px;
-margin:15px auto;
-background:rgba(255,255,255,0.95);
-border:3px solid black;
-border-radius:20px;
+margin:20px auto;
 padding:15px;
+}
+
+/* Glass container */
+.container{
+background:rgba(255,255,255,0.82);
+backdrop-filter:blur(12px);
+border-radius:24px;
+border:2px solid rgba(0,0,0,0.8);
+padding:20px;
+box-shadow:0 20px 40px rgba(0,0,0,0.15);
+animation:fadeUp 1s ease;
+}
+
+/* Hero */
+.hero{
+text-align:center;
+margin-bottom:20px;
 }
 
 .logo{
 width:100%;
-margin-bottom:10px;
+max-height:420px;
+object-fit:contain;
+border-radius:12px;
+animation:fade 1.2s ease;
 }
 
+/* Кнопки */
 .btn{
 display:block;
 background:black;
 color:white;
-padding:14px;
+padding:16px;
+margin:10px 0;
 text-align:center;
 text-decoration:none;
-border-radius:8px;
-margin:10px 0;
+border-radius:10px;
 font-size:17px;
+transition:0.3s;
 }
 
+.btn:hover{
+transform:scale(1.03);
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Языки */
 .lang-switch{
 text-align:center;
-margin:10px 0;
+margin:10px 0 20px;
 }
 
 .lang-switch button{
@@ -53,45 +79,62 @@ border-radius:6px;
 font-size:13px;
 }
 
+/* Секции */
 .section{
-background:white;
-padding:15px;
-margin-top:12px;
-border-radius:10px;
-box-shadow:0 4px 10px rgba(0,0,0,0.05);
+background:rgba(255,255,255,0.95);
+padding:18px;
+margin-top:15px;
+border-radius:16px;
+box-shadow:0 10px 20px rgba(0,0,0,0.08);
+animation:fadeUp 1s ease;
 }
 
 .section h2{
 margin-top:0;
 border-bottom:1px solid #eee;
 padding-bottom:5px;
+letter-spacing:1px;
 }
 
 .price{
 display:flex;
 justify-content:space-between;
 margin:6px 0;
+font-size:15px;
 }
 
+/* Отзывы */
 .review{
-border-bottom:1px solid #eee;
-padding:5px 0;
-font-size:14px;
+background:white;
+padding:10px;
+margin:8px 0;
+border-radius:10px;
+box-shadow:0 4px 8px rgba(0,0,0,0.05);
 }
 
-input, textarea{
-width:100%;
-padding:8px;
-margin-top:5px;
-border-radius:6px;
-border:1px solid #ccc;
-}
-
+/* Footer */
 .footer{
 text-align:center;
-margin-top:15px;
+margin-top:20px;
 font-size:14px;
 color:#555;
+}
+
+/* Анимации */
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 </style>
 </head>
@@ -99,8 +142,11 @@ color:#555;
 <body>
 
 <div class="wrapper">
+<div class="container">
 
+<div class="hero">
 <img src="Logo.jpg" class="logo">
+</div>
 
 <a class="btn" href="https://calendar.app.google/c4vEniQTJLtWwp8VA" target="_blank" data-lang="book">
 ONLINE BOOKING
@@ -133,103 +179,42 @@ WHATSAPP
 </div>
 
 <div class="section">
-<h2 data-lang="ext">Extensions</h2>
-<div class="price"><span>1:1</span><span>45€</span></div>
-<div class="price"><span>2D / 3D</span><span>50€</span></div>
-<div class="price"><span>4D–6D</span><span>60€</span></div>
-<div class="price"><span data-lang="remove">Verwijderen</span><span>10€</span></div>
-</div>
-
-<div class="section">
 <h2 data-lang="reviews">Reviews</h2>
 <div id="reviewList"></div>
 
 <input id="name" placeholder="Name">
 <textarea id="text" placeholder="Write review"></textarea>
-<button class="btn" onclick="addReview()">Add review</button>
+<a class="btn" onclick="addReview()">Add review</a>
 </div>
 
 <div class="footer">
-PLATAANSTRAAT 15, 5802 EH VENRAY<br>
+PLATAANSTRAAT 15<br>
+5802 EH VENRAY<br>
 +38 097 951 6397
 </div>
 
 </div>
+</div>
 
 <script>
-const translations = {
-nl:{
-book:"ONLINE BOEKEN",
-brows:"Wenkbrauwen",
-lashes:"Wimpers",
-ext:"Extensions",
-corr:"Correctie",
-color:"Verven",
-corrcolor:"Correctie + verven",
-lam:"Laminatie",
-remove:"Verwijderen",
-reviews:"Reviews"
-},
-en:{
-book:"BOOK ONLINE",
-brows:"Brows",
-lashes:"Lashes",
-ext:"Extensions",
-corr:"Correction",
-color:"Coloring",
-corrcolor:"Correction + coloring",
-lam:"Lamination",
-remove:"Removal",
-reviews:"Reviews"
-},
-ru:{
-book:"ОНЛАЙН ЗАПИСЬ",
-brows:"Брови",
-lashes:"Ресницы",
-ext:"Наращивание",
-corr:"Коррекция",
-color:"Окрашивание",
-corrcolor:"Коррекция + окрашивание",
-lam:"Ламинирование",
-remove:"Снятие",
-reviews:"Отзывы"
-},
-ua:{
-book:"ОНЛАЙН ЗАПИС",
-brows:"Брови",
-lashes:"Вії",
-ext:"Нарощування",
-corr:"Корекція",
-color:"Фарбування",
-corrcolor:"Корекція + фарбування",
-lam:"Ламінування",
-remove:"Зняття",
-reviews:"Відгуки"
-},
-pl:{
-book:"REZERWACJA ONLINE",
-brows:"Brwi",
-lashes:"Rzęsy",
-ext:"Przedłużanie",
-corr:"Korekta",
-color:"Farbowanie",
-corrcolor:"Korekta + farbowanie",
-lam:"Laminacja",
-remove:"Usuwanie",
-reviews:"Opinie"
-}
+const translations={
+nl:{book:"ONLINE BOEKEN",brows:"Wenkbrauwen",lashes:"Wimpers",corr:"Correctie",color:"Verven",corrcolor:"Correctie + verven",lam:"Laminatie",reviews:"Reviews"},
+en:{book:"BOOK ONLINE",brows:"Brows",lashes:"Lashes",corr:"Correction",color:"Coloring",corrcolor:"Correction + coloring",lam:"Lamination",reviews:"Reviews"},
+ru:{book:"ОНЛАЙН ЗАПИСЬ",brows:"Брови",lashes:"Ресницы",corr:"Коррекция",color:"Окрашивание",corrcolor:"Коррекция + окрашивание",lam:"Ламинирование",reviews:"Отзывы"},
+ua:{book:"ОНЛАЙН ЗАПИС",brows:"Брови",lashes:"Вії",corr:"Корекція",color:"Фарбування",corrcolor:"Корекція + фарбування",lam:"Ламінування",reviews:"Відгуки"},
+pl:{book:"REZERWACJA ONLINE",brows:"Brwi",lashes:"Rzęsy",corr:"Korekta",color:"Farbowanie",corrcolor:"Korekta + farbowanie",lam:"Laminacja",reviews:"Opinie"}
 };
 
 function setLang(lang){
 document.querySelectorAll("[data-lang]").forEach(el=>{
-el.innerText = translations[lang][el.dataset.lang];
+el.innerText=translations[lang][el.dataset.lang];
 });
 }
 
 function addReview(){
 let name=document.getElementById("name").value;
 let text=document.getElementById("text").value;
-if(!name || !text) return;
+if(!name||!text)return;
 
 let reviews=JSON.parse(localStorage.getItem("reviews")||"[]");
 reviews.push({name,text});
@@ -247,7 +232,6 @@ reviews.forEach(r=>{
 list.innerHTML+=`<div class="review"><b>${r.name}</b><br>${r.text}</div>`;
 });
 }
-
 showReviews();
 </script>
 
