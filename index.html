@@ -10,45 +10,41 @@ margin:0;
 font-family:Arial, sans-serif;
 background:#ffffff;
 color:#111;
-display:flex;
-justify-content:center;
-}
-
-/* ЧЕРНАЯ РАМКА */
-.container{
-width:100%;
-max-width:520px;
-border:3px solid black;
-border-radius:12px;
-margin:10px;
-padding:20px;
-box-sizing:border-box;
 text-align:center;
-background:white;
 }
 
-/* ЛОГО */
+/* Чёрная рамка сайта */
+.container{
+padding:20px;
+max-width:500px;
+margin:20px auto;
+border:2px solid black;
+border-radius:12px;
+}
+
+/* Лого */
 .logo{
 width:100%;
-border-radius:10px;
+max-width:420px;
 margin-bottom:20px;
 }
 
-/* КНОПКА */
+/* WhatsApp кнопка */
 .btn{
 display:block;
 background:black;
 color:white;
-padding:15px;
+padding:16px;
 text-decoration:none;
-border-radius:8px;
-margin:10px 0;
+border-radius:10px;
+margin:10px 0 15px;
 font-size:18px;
+font-weight:bold;
 }
 
-/* ЯЗЫКИ */
+/* Языки */
 .lang-switch{
-margin:10px 0 20px;
+margin-bottom:15px;
 }
 
 .lang-switch button{
@@ -59,12 +55,11 @@ background:black;
 color:white;
 border-radius:6px;
 font-size:13px;
-cursor:pointer;
 }
 
-/* СЕКЦИИ */
+/* Блоки */
 .section{
-background:#f7f7f7;
+background:#f9f9f9;
 padding:18px;
 margin-bottom:15px;
 border-radius:10px;
@@ -100,7 +95,7 @@ text-align:center;
 
 <img src="Logo.jpg" class="logo">
 
-<a class="btn" id="waBtn" href="https://wa.me/380979516397">
+<a class="btn" href="https://wa.me/380979516397" id="waBtn">
 WHATSAPP
 </a>
 
@@ -112,26 +107,37 @@ WHATSAPP
 <button onclick="setLang('pl')">PL</button>
 </div>
 
+<!-- Брови -->
 <div class="section">
 <h2 id="browsTitle">Wenkbrauwen</h2>
-<div class="price"><span id="b1">Correctie</span><span>15€</span></div>
+<div class="price"><span id="b1">Correctie (wax / pincet)</span><span>15€</span></div>
 <div class="price"><span id="b2">Verven</span><span>18€</span></div>
 <div class="price"><span id="b3">Correctie + verven</span><span>25€</span></div>
 <div class="price"><span id="b4">Laminatie</span><span>25€</span></div>
 </div>
 
+<!-- Ресницы -->
 <div class="section">
 <h2 id="lashTitle">Wimpers</h2>
 <div class="price"><span id="l1">Verven</span><span>15€</span></div>
 <div class="price"><span id="l2">Laminatie</span><span>40€</span></div>
 </div>
 
+<!-- Наращивание -->
 <div class="section">
 <h2 id="extTitle">Extensions</h2>
-<div class="price"><span id="e1">1:1</span><span>45€</span></div>
+<div class="price"><span id="e1">Klassiek 1:1</span><span>45€</span></div>
 <div class="price"><span id="e2">2D / 3D</span><span>50€</span></div>
-<div class="price"><span id="e3">4D–6D</span><span>60€</span></div>
+<div class="price"><span id="e3">4D / 5D / 6D</span><span>60€</span></div>
 <div class="price"><span id="e4">Verwijderen</span><span>10€</span></div>
+</div>
+
+<!-- Комплекс -->
+<div class="section">
+<h2 id="comboTitle">Combinaties</h2>
+<div class="price"><span id="c1">Laminatie + correctie + verven wenkbrauwen</span><span>40€</span></div>
+<div class="price"><span id="c2">Laminatie wenkbrauwen + wimpers</span><span>60€</span></div>
+<div class="price"><span id="c3">Verven wenkbrauwen + wimpers</span><span>35€</span></div>
 </div>
 
 <div class="footer">
@@ -145,91 +151,116 @@ PLATAANSTRAAT 15 5801BM VENRAY<br>
 function setLang(lang){
 
 const t = {
-
 nl:{
-btn:"WhatsApp afspraak",
 brows:"Wenkbrauwen",
-b1:"Correctie",
+lash:"Wimpers",
+ext:"Extensions",
+combo:"Combinaties",
+b1:"Correctie (wax / pincet)",
 b2:"Verven",
 b3:"Correctie + verven",
 b4:"Laminatie",
-lash:"Wimpers",
 l1:"Verven",
 l2:"Laminatie",
-ext:"Extensions",
-e4:"Verwijderen"
+e1:"Klassiek 1:1",
+e2:"2D / 3D",
+e3:"4D / 5D / 6D",
+e4:"Verwijderen",
+c1:"Laminatie + correctie + verven wenkbrauwen",
+c2:"Laminatie wenkbrauwen + wimpers",
+c3:"Verven wenkbrauwen + wimpers"
 },
 
 en:{
-btn:"Book via WhatsApp",
-brows:"Brows",
-b1:"Correction",
+brows:"Eyebrows",
+lash:"Lashes",
+ext:"Extensions",
+combo:"Packages",
+b1:"Correction (wax / tweezers)",
 b2:"Tinting",
 b3:"Correction + tint",
 b4:"Lamination",
-lash:"Lashes",
 l1:"Tinting",
 l2:"Lamination",
-ext:"Extensions",
-e4:"Removal"
+e1:"Classic 1:1",
+e2:"2D / 3D",
+e3:"4D / 5D / 6D",
+e4:"Removal",
+c1:"Lamination + correction + tint brows",
+c2:"Brows + lashes lamination",
+c3:"Tint brows + lashes"
 },
 
 ru:{
-btn:"Запись в WhatsApp",
 brows:"Брови",
-b1:"Коррекция",
+lash:"Ресницы",
+ext:"Наращивание",
+combo:"Комплекс",
+b1:"Коррекция (воск / пинцет)",
 b2:"Окрашивание",
 b3:"Коррекция + окрашивание",
 b4:"Ламинирование",
-lash:"Ресницы",
 l1:"Окрашивание",
 l2:"Ламинирование",
-ext:"Наращивание",
-e4:"Снятие"
+e1:"Классика 1:1",
+e2:"2D / 3D",
+e3:"4D / 5D / 6D",
+e4:"Снятие",
+c1:"Ламинирование + коррекция + окрашивание бровей",
+c2:"Ламинирование бровей + ресниц",
+c3:"Окрашивание бровей + ресниц"
 },
 
 ua:{
-btn:"Запис у WhatsApp",
 brows:"Брови",
-b1:"Корекція",
+lash:"Вії",
+ext:"Нарощування",
+combo:"Комплекс",
+b1:"Корекція (віск / пінцет)",
 b2:"Фарбування",
 b3:"Корекція + фарбування",
 b4:"Ламінування",
-lash:"Вії",
 l1:"Фарбування",
 l2:"Ламінування",
-ext:"Нарощення",
-e4:"Зняття"
+e1:"Класика 1:1",
+e2:"2D / 3D",
+e3:"4D / 5D / 6D",
+e4:"Зняття",
+c1:"Ламінування + корекція + фарбування брів",
+c2:"Ламінування брів + вій",
+c3:"Фарбування брів + вій"
 },
 
 pl:{
-btn:"Rezerwacja WhatsApp",
 brows:"Brwi",
-b1:"Regulacja",
+lash:"Rzęsy",
+ext:"Przedłużanie",
+combo:"Pakiety",
+b1:"Regulacja (wosk / pęseta)",
 b2:"Farbowanie",
 b3:"Regulacja + farbowanie",
 b4:"Laminacja",
-lash:"Rzęsy",
 l1:"Farbowanie",
 l2:"Laminacja",
-ext:"Przedłużanie",
-e4:"Usuwanie"
+e1:"Klasyczne 1:1",
+e2:"2D / 3D",
+e3:"4D / 5D / 6D",
+e4:"Usunięcie",
+c1:"Laminacja + regulacja + farbowanie brwi",
+c2:"Laminacja brwi + rzęs",
+c3:"Farbowanie brwi + rzęs"
 }
-
 };
 
-document.getElementById("waBtn").innerText = t[lang].btn;
-document.getElementById("browsTitle").innerText = t[lang].brows;
-document.getElementById("b1").innerText = t[lang].b1;
-document.getElementById("b2").innerText = t[lang].b2;
-document.getElementById("b3").innerText = t[lang].b3;
-document.getElementById("b4").innerText = t[lang].b4;
-document.getElementById("lashTitle").innerText = t[lang].lash;
-document.getElementById("l1").innerText = t[lang].l1;
-document.getElementById("l2").innerText = t[lang].l2;
-document.getElementById("extTitle").innerText = t[lang].ext;
-document.getElementById("e4").innerText = t[lang].e4;
+let d = t[lang];
 
+document.getElementById("browsTitle").innerText=d.brows;
+document.getElementById("lashTitle").innerText=d.lash;
+document.getElementById("extTitle").innerText=d.ext;
+document.getElementById("comboTitle").innerText=d.combo;
+
+["b1","b2","b3","b4","l1","l2","e1","e2","e3","e4","c1","c2","c3"]
+.forEach(id=>document.getElementById(id).innerText=d[id]);
 }
 </script>
 
