@@ -8,28 +8,32 @@
 body{
 margin:0;
 font-family:Arial, sans-serif;
-background:#ffffff;
+background:url("background.jpg") center/cover fixed;
 color:#111;
 text-align:center;
 }
 
-/* Чёрная рамка сайта */
+/* Внутренняя рамка */
 .container{
 padding:20px;
-max-width:500px;
+max-width:520px;
 margin:20px auto;
-border:2px solid black;
-border-radius:12px;
+background:rgba(255,255,255,0.92);
+border:3px solid black;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
 }
 
-/* Лого */
+/* Лого большое */
 .logo{
 width:100%;
-max-width:420px;
+max-height:420px;
+object-fit:contain;
+border-radius:10px;
 margin-bottom:20px;
 }
 
-/* WhatsApp кнопка */
+/* WhatsApp */
 .btn{
 display:block;
 background:black;
@@ -48,7 +52,7 @@ margin-bottom:15px;
 }
 
 .lang-switch button{
-padding:6px 10px;
+padding:7px 12px;
 margin:3px;
 border:none;
 background:black;
@@ -59,17 +63,18 @@ font-size:13px;
 
 /* Блоки */
 .section{
-background:#f9f9f9;
+background:white;
 padding:18px;
 margin-bottom:15px;
-border-radius:10px;
+border-radius:12px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
 text-align:left;
 }
 
 .section h2{
 margin-top:0;
 font-size:18px;
-border-bottom:1px solid #ddd;
+border-bottom:1px solid #eee;
 padding-bottom:5px;
 }
 
@@ -80,22 +85,31 @@ margin:6px 0;
 font-size:15px;
 }
 
+/* Отзывы */
+.review{
+background:white;
+padding:15px;
+margin:10px 0;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.05);
+text-align:left;
+font-size:14px;
+}
+
 .footer{
 font-size:14px;
 color:#555;
-margin-top:20px;
-text-align:center;
+margin-top:15px;
 }
 </style>
 </head>
 
 <body>
-
 <div class="container">
 
 <img src="Logo.jpg" class="logo">
 
-<a class="btn" href="https://wa.me/380979516397" id="waBtn">
+<a class="btn" href="https://wa.me/380979516397" id="whatsappBtn">
 WHATSAPP
 </a>
 
@@ -107,41 +121,53 @@ WHATSAPP
 <button onclick="setLang('pl')">PL</button>
 </div>
 
-<!-- Брови -->
+<!-- УСЛУГИ -->
 <div class="section">
 <h2 id="browsTitle">Wenkbrauwen</h2>
-<div class="price"><span id="b1">Correctie (wax / pincet)</span><span>15€</span></div>
+<div class="price"><span id="b1">Correctie</span><span>15€</span></div>
 <div class="price"><span id="b2">Verven</span><span>18€</span></div>
 <div class="price"><span id="b3">Correctie + verven</span><span>25€</span></div>
 <div class="price"><span id="b4">Laminatie</span><span>25€</span></div>
 </div>
 
-<!-- Ресницы -->
 <div class="section">
-<h2 id="lashTitle">Wimpers</h2>
+<h2 id="lashesTitle">Wimpers</h2>
 <div class="price"><span id="l1">Verven</span><span>15€</span></div>
 <div class="price"><span id="l2">Laminatie</span><span>40€</span></div>
 </div>
 
-<!-- Наращивание -->
 <div class="section">
 <h2 id="extTitle">Extensions</h2>
-<div class="price"><span id="e1">Klassiek 1:1</span><span>45€</span></div>
-<div class="price"><span id="e2">2D / 3D</span><span>50€</span></div>
-<div class="price"><span id="e3">4D / 5D / 6D</span><span>60€</span></div>
-<div class="price"><span id="e4">Verwijderen</span><span>10€</span></div>
+<div class="price"><span>1:1</span><span>45€</span></div>
+<div class="price"><span>2D / 3D</span><span>50€</span></div>
+<div class="price"><span>4D / 5D / 6D</span><span>60€</span></div>
+<div class="price"><span id="remove">Verwijderen</span><span>10€</span></div>
 </div>
 
-<!-- Комплекс -->
 <div class="section">
 <h2 id="comboTitle">Combinaties</h2>
-<div class="price"><span id="c1">Laminatie + correctie + verven wenkbrauwen</span><span>40€</span></div>
+<div class="price"><span id="c1">Laminatie + correctie + verven</span><span>40€</span></div>
 <div class="price"><span id="c2">Laminatie wenkbrauwen + wimpers</span><span>60€</span></div>
 <div class="price"><span id="c3">Verven wenkbrauwen + wimpers</span><span>35€</span></div>
 </div>
 
+<!-- ОТЗЫВЫ -->
+<div class="section">
+<h2 id="reviewTitle">Reviews</h2>
+
+<div class="review">⭐️⭐️⭐️⭐️⭐️  
+Perfecte service! Heel tevreden met mijn wenkbrauwen.</div>
+
+<div class="review">⭐️⭐️⭐️⭐️⭐️  
+Very professional and beautiful result!</div>
+
+<div class="review">⭐️⭐️⭐️⭐️⭐️  
+Дуже гарна робота, рекомендую!</div>
+
+</div>
+
 <div class="footer">
-PLATAANSTRAAT 15 5801BM VENRAY<br>
+PLATAANSTRAAT 15, VENRAY<br>
 +38 097 951 6397
 </div>
 
@@ -153,114 +179,107 @@ function setLang(lang){
 const t = {
 nl:{
 brows:"Wenkbrauwen",
-lash:"Wimpers",
+lashes:"Wimpers",
 ext:"Extensions",
 combo:"Combinaties",
-b1:"Correctie (wax / pincet)",
+reviews:"Reviews",
+b1:"Correctie",
 b2:"Verven",
 b3:"Correctie + verven",
 b4:"Laminatie",
 l1:"Verven",
 l2:"Laminatie",
-e1:"Klassiek 1:1",
-e2:"2D / 3D",
-e3:"4D / 5D / 6D",
-e4:"Verwijderen",
-c1:"Laminatie + correctie + verven wenkbrauwen",
+remove:"Verwijderen",
+c1:"Laminatie + correctie + verven",
 c2:"Laminatie wenkbrauwen + wimpers",
 c3:"Verven wenkbrauwen + wimpers"
 },
-
 en:{
-brows:"Eyebrows",
-lash:"Lashes",
+brows:"Brows",
+lashes:"Lashes",
 ext:"Extensions",
 combo:"Packages",
-b1:"Correction (wax / tweezers)",
+reviews:"Reviews",
+b1:"Correction",
 b2:"Tinting",
 b3:"Correction + tint",
 b4:"Lamination",
 l1:"Tinting",
 l2:"Lamination",
-e1:"Classic 1:1",
-e2:"2D / 3D",
-e3:"4D / 5D / 6D",
-e4:"Removal",
-c1:"Lamination + correction + tint brows",
-c2:"Brows + lashes lamination",
-c3:"Tint brows + lashes"
+remove:"Removal",
+c1:"Lamination + correction + tint",
+c2:"Brow + lash lamination",
+c3:"Brow + lash tint"
 },
-
 ru:{
 brows:"Брови",
-lash:"Ресницы",
+lashes:"Ресницы",
 ext:"Наращивание",
-combo:"Комплекс",
-b1:"Коррекция (воск / пинцет)",
+combo:"Комплексы",
+reviews:"Отзывы",
+b1:"Коррекция",
 b2:"Окрашивание",
 b3:"Коррекция + окрашивание",
 b4:"Ламинирование",
 l1:"Окрашивание",
 l2:"Ламинирование",
-e1:"Классика 1:1",
-e2:"2D / 3D",
-e3:"4D / 5D / 6D",
-e4:"Снятие",
-c1:"Ламинирование + коррекция + окрашивание бровей",
-c2:"Ламинирование бровей + ресниц",
-c3:"Окрашивание бровей + ресниц"
+remove:"Снятие",
+c1:"Ламинирование + коррекция + окрашивание",
+c2:"Ламинирование бровей и ресниц",
+c3:"Окрашивание бровей и ресниц"
 },
-
 ua:{
 brows:"Брови",
-lash:"Вії",
+lashes:"Вії",
 ext:"Нарощування",
-combo:"Комплекс",
-b1:"Корекція (віск / пінцет)",
+combo:"Комплекси",
+reviews:"Відгуки",
+b1:"Корекція",
 b2:"Фарбування",
 b3:"Корекція + фарбування",
 b4:"Ламінування",
 l1:"Фарбування",
 l2:"Ламінування",
-e1:"Класика 1:1",
-e2:"2D / 3D",
-e3:"4D / 5D / 6D",
-e4:"Зняття",
-c1:"Ламінування + корекція + фарбування брів",
-c2:"Ламінування брів + вій",
-c3:"Фарбування брів + вій"
+remove:"Зняття",
+c1:"Ламінування + корекція + фарбування",
+c2:"Ламінування брів та вій",
+c3:"Фарбування брів та вій"
 },
-
 pl:{
 brows:"Brwi",
-lash:"Rzęsy",
+lashes:"Rzęsy",
 ext:"Przedłużanie",
 combo:"Pakiety",
-b1:"Regulacja (wosk / pęseta)",
+reviews:"Opinie",
+b1:"Korekta",
 b2:"Farbowanie",
-b3:"Regulacja + farbowanie",
+b3:"Korekta + farbowanie",
 b4:"Laminacja",
 l1:"Farbowanie",
 l2:"Laminacja",
-e1:"Klasyczne 1:1",
-e2:"2D / 3D",
-e3:"4D / 5D / 6D",
-e4:"Usunięcie",
-c1:"Laminacja + regulacja + farbowanie brwi",
-c2:"Laminacja brwi + rzęs",
-c3:"Farbowanie brwi + rzęs"
+remove:"Usuwanie",
+c1:"Laminacja + korekta + farbowanie",
+c2:"Laminacja brwi i rzęs",
+c3:"Farbowanie brwi i rzęs"
 }
 };
 
-let d = t[lang];
+document.getElementById("browsTitle").innerText=t[lang].brows;
+document.getElementById("lashesTitle").innerText=t[lang].lashes;
+document.getElementById("extTitle").innerText=t[lang].ext;
+document.getElementById("comboTitle").innerText=t[lang].combo;
+document.getElementById("reviewTitle").innerText=t[lang].reviews;
 
-document.getElementById("browsTitle").innerText=d.brows;
-document.getElementById("lashTitle").innerText=d.lash;
-document.getElementById("extTitle").innerText=d.ext;
-document.getElementById("comboTitle").innerText=d.combo;
-
-["b1","b2","b3","b4","l1","l2","e1","e2","e3","e4","c1","c2","c3"]
-.forEach(id=>document.getElementById(id).innerText=d[id]);
+document.getElementById("b1").innerText=t[lang].b1;
+document.getElementById("b2").innerText=t[lang].b2;
+document.getElementById("b3").innerText=t[lang].b3;
+document.getElementById("b4").innerText=t[lang].b4;
+document.getElementById("l1").innerText=t[lang].l1;
+document.getElementById("l2").innerText=t[lang].l2;
+document.getElementById("remove").innerText=t[lang].remove;
+document.getElementById("c1").innerText=t[lang].c1;
+document.getElementById("c2").innerText=t[lang].c2;
+document.getElementById("c3").innerText=t[lang].c3;
 }
 </script>
 
