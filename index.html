@@ -29,7 +29,6 @@ backdrop-filter:blur(3px);
 z-index:-1;
 }
 
-/* Languages */
 .lang{
 position:fixed;
 top:15px;
@@ -63,7 +62,7 @@ margin-bottom:20px;
 }
 
 .box{
-background:rgba(255,255,255,.8);
+background:rgba(255,255,255,.85);
 border-radius:20px;
 padding:25px;
 }
@@ -87,7 +86,7 @@ font-size:14px;
 .note{
 margin:15px 0 5px;
 font-size:12px;
-opacity:0.7;
+opacity:.7;
 }
 
 .btn{
@@ -101,7 +100,7 @@ border-radius:12px;
 font-size:14px;
 }
 
-/* Price */
+/* price */
 .section{margin:18px 0;}
 
 .section-title{
@@ -113,9 +112,9 @@ font-weight:600;
 .row{
 display:flex;
 justify-content:space-between;
+gap:10px;
 font-size:14px;
 margin:4px 0;
-gap:10px;
 }
 .row span:first-child{flex:1;text-align:left;}
 .row span:last-child{min-width:45px;text-align:right;}
@@ -129,7 +128,7 @@ gap:10px;
 <button onclick="setLang('en',this)">EN</button>
 <button onclick="setLang('pl',this)">PL</button>
 <button onclick="setLang('nl',this)">NL</button>
-<button onclick="setLang('ua',this)" class="active">UA</button>
+<button onclick="setLang('ua',this)">UA</button>
 </div>
 
 <div class="wrapper">
@@ -140,7 +139,7 @@ gap:10px;
 
 <!-- HOME -->
 <div id="home" class="page active">
-<h1 id="contactTitle">КОНТАКТИ</h1>
+<h1 id="contactTitle"></h1>
 
 <a href="https://instagram.com/blikstudio_venray" class="item">
 <img src="Instagram.jpg"> BLIKSTUDIO_VENRAY
@@ -205,7 +204,7 @@ PLATAANSTRAAT 15 5802 EH VENRAY
 <!-- MAP -->
 <div id="map" class="page">
 
-<h1 id="mapTitle">GOOGLE</h1>
+<h1 id="mapTitle"></h1>
 
 <a href="https://share.google/KJYIucArFn30dgOKE" class="btn" target="_blank" id="openGoogle"></a>
 
@@ -225,6 +224,7 @@ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
 document.getElementById(id).classList.add('active');
 }
 
+/* translations */
 const t={
 ua:{
 contact:"КОНТАКТИ",
@@ -255,14 +255,20 @@ c3:"ФАРБУВАННЯ БРІВ + ВІЙ"
 
 function setLang(lang,btn){
 localStorage.setItem("lang",lang);
-document.querySelectorAll('.lang button').forEach(b=>b.classList.remove('active'));
-if(btn) btn.classList.add('active');
 
+/* active button */
+document.querySelectorAll('.lang button').forEach(b=>{
+b.classList.remove('active');
+if(b.innerText.toLowerCase()==lang) b.classList.add('active');
+});
+
+/* texts */
 document.getElementById("contactTitle").innerText=t[lang].contact;
 document.getElementById("priceBtn").innerText=t[lang].price;
 document.getElementById("mapBtn").innerText=t[lang].map;
 document.getElementById("backBtn").innerText=t[lang].back;
 document.getElementById("backBtn2").innerText=t[lang].back;
+document.getElementById("mapTitle").innerText="GOOGLE";
 document.getElementById("openGoogle").innerText=t[lang].open;
 document.getElementById("prepayNote").innerText=t[lang].prepay;
 
@@ -288,6 +294,7 @@ document.getElementById("c2").innerText=t[lang].c2;
 document.getElementById("c3").innerText=t[lang].c3;
 }
 
+/* load saved language */
 window.onload=function(){
 let lang=localStorage.getItem("lang") || "ua";
 setLang(lang);
