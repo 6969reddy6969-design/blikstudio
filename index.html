@@ -110,10 +110,7 @@ justify-content:center;
 box-shadow:0 4px 12px rgba(0,0,0,0.3);
 z-index:999;
 }
-
-.whatsapp-float img{
-width:32px;
-}
+.whatsapp-float img{width:32px;}
 </style>
 </head>
 
@@ -135,7 +132,6 @@ width:32px;
 <!-- HOME -->
 <div id="home" class="page active">
 <h1 id="contactTitle">CONTACT</h1>
-
 <button class="btn" onclick="showPage('price')" id="priceBtn">PRICE</button>
 </div>
 
@@ -180,29 +176,31 @@ width:32px;
 </div>
 </div>
 
-<!-- Floating WhatsApp -->
+<!-- WhatsApp -->
 <a id="waFloat" class="whatsapp-float" target="_blank">
 <img src="Whatsapp.jpg">
 </a>
+
 <script>
 
-/* ===== ПЕРЕКЛЮЧЕНИЕ СТРАНИЦ ===== */
+/* Pages */
 function showPage(id){
 document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
 document.getElementById(id).classList.add('active');
 }
 
-/* ===== ТЕКСТЫ WHATSAPP ===== */
+/* WhatsApp text */
 const waText={
 ua:"Доброго дня, хочу записатися",
 ru:"Здравствуйте, хочу записаться",
-en:"Hello, I want to book",
+en:"Hello, I want to book an appointment",
 pl:"Dzień dobry, chcę się zapisać",
 nl:"Hallo, ik wil een afspraak maken"
 };
 
-/* ===== ПЕРЕВОДЫ ===== */
+/* Translations */
 const t={
+
 ua:{
 contact:"КОНТАКТИ",
 price:"ПРАЙС",
@@ -216,14 +214,14 @@ lashes:"ВІЇ",
 l1:"ФАРБУВАННЯ",
 l2:"ЛАМІНУВАННЯ",
 ext:"НАРОЩУВАННЯ ВІЙ",
-e1:"КЛАСИКА",
+e1:"КЛАСИКА 1:1",
 e2:"2D / 3D",
 e3:"4D / 5D / 6D",
 e4:"ЗНЯТТЯ",
-combo:"КОМПЛЕКС",
+combo:"КОМПЛЕКСНІ ПРОЦЕДУРИ",
 c1:"ЛАМІНУВАННЯ + КОРЕКЦІЯ + ФАРБУВАННЯ",
 c2:"БРОВИ + ВІЇ",
-c3:"ФАРБУВАННЯ БРОВИ + ВІЇ"
+c3:"ФАРБУВАННЯ БРІВ + ВІЙ"
 },
 
 ru:{
@@ -239,18 +237,88 @@ lashes:"РЕСНИЦЫ",
 l1:"ОКРАШИВАНИЕ",
 l2:"ЛАМИНИРОВАНИЕ",
 ext:"НАРАЩИВАНИЕ",
-e1:"КЛАССИКА",
+e1:"КЛАССИКА 1:1",
 e2:"2D / 3D",
 e3:"4D / 5D / 6D",
 e4:"СНЯТИЕ",
-combo:"КОМПЛЕКС",
+combo:"КОМПЛЕКСНЫЕ ПРОЦЕДУРЫ",
 c1:"ЛАМИНИРОВАНИЕ + КОРРЕКЦИЯ + ОКРАШИВАНИЕ",
 c2:"БРОВИ + РЕСНИЦЫ",
 c3:"ОКРАШИВАНИЕ БРОВЕЙ + РЕСНИЦ"
+},
+
+en:{
+contact:"CONTACT",
+price:"PRICE",
+back:"BACK",
+brows:"BROWS",
+b1:"CORRECTION",
+b2:"TINTING",
+b3:"CORRECTION + TINT",
+b4:"LAMINATION",
+lashes:"LASHES",
+l1:"TINTING",
+l2:"LAMINATION",
+ext:"EXTENSIONS",
+e1:"CLASSIC",
+e2:"2D / 3D",
+e3:"4D / 5D / 6D",
+e4:"REMOVAL",
+combo:"COMBO",
+c1:"LAMINATION + CORRECTION + TINT",
+c2:"BROWS + LASHES",
+c3:"BROWS & LASHES TINT"
+},
+
+pl:{
+contact:"KONTAKT",
+price:"CENNIK",
+back:"WSTECZ",
+brows:"BRWI",
+b1:"KOREKTA",
+b2:"FARBOWANIE",
+b3:"KOREKTA + FARBOWANIE",
+b4:"LAMINACJA",
+lashes:"RZĘSY",
+l1:"FARBOWANIE",
+l2:"LAMINACJA",
+ext:"PRZEDŁUŻANIE",
+e1:"KLASYKA",
+e2:"2D / 3D",
+e3:"4D / 5D / 6D",
+e4:"USUNIĘCIE",
+combo:"PAKIETY",
+c1:"LAMINACJA + KOREKTA + FARBOWANIE",
+c2:"BRWI + RZĘSY",
+c3:"FARBOWANIE BRWI + RZĘSY"
+},
+
+nl:{
+contact:"CONTACT",
+price:"PRIJS",
+back:"TERUG",
+brows:"WENKBRAUWEN",
+b1:"CORRECTIE",
+b2:"VERVEN",
+b3:"CORRECTIE + VERVEN",
+b4:"LAMINATIE",
+lashes:"WIMPERS",
+l1:"VERVEN",
+l2:"LAMINATIE",
+ext:"EXTENSIONS",
+e1:"KLASSIEK",
+e2:"2D / 3D",
+e3:"4D / 5D / 6D",
+e4:"VERWIJDEREN",
+combo:"COMBINATIES",
+c1:"LAMINATIE + CORRECTIE + VERVEN",
+c2:"WENKBRAUWEN + WIMPERS",
+c3:"VERVEN WENKBRAUWEN + WIMPERS"
 }
+
 };
 
-/* ===== УСТАНОВКА ЯЗЫКА ===== */
+/* Set language */
 function setLang(lang,btn){
 
 localStorage.setItem("lang",lang);
@@ -285,14 +353,18 @@ c1.innerText=L.c1;
 c2.innerText=L.c2;
 c3.innerText=L.c3;
 
-/* WhatsApp ссылка */
+/* WhatsApp */
 let text=encodeURIComponent(waText[lang]||waText.ua);
 waFloat.href="https://wa.me/31684553243?text="+text;
 }
 
-/* ===== ЗАГРУЗКА ===== */
+/* Load */
 window.onload=function(){
-setLang(localStorage.getItem("lang")||"ua");
+let lang=localStorage.getItem("lang")||"ua";
+setLang(lang);
+document.querySelectorAll('.lang button').forEach(b=>{
+if(b.innerText.toLowerCase()==lang) b.classList.add('active');
+});
 }
 
 </script>
