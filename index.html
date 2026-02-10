@@ -8,82 +8,102 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
 body{
 font-family:'Montserrat',sans-serif;
 text-transform:uppercase;
-background:url('Fon.jpg') no-repeat center center;
+background:url('Fon.jpg') no-repeat center center fixed;
 background-size:cover;
-margin:0;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
 }
 
-/* Blur */
-body:before{
+/* легкое размытие */
+body:after{
 content:"";
 position:fixed;
+top:0;
+left:0;
 width:100%;
 height:100%;
-backdrop-filter:blur(4px);
+background:rgba(255,255,255,0.2);
+backdrop-filter:blur(3px);
 z-index:-1;
 }
 
-/* Languages */
+/* языки */
 .lang{
 position:fixed;
-top:20px;
-right:20px;
+top:15px;
+right:15px;
 display:flex;
-gap:8px;
+gap:6px;
+z-index:10;
 }
 
 .lang button{
 background:#000;
 color:#fff;
 border:none;
-padding:8px 14px;
+padding:7px 12px;
 border-radius:10px;
+font-size:12px;
 opacity:0.4;
 }
 
 .lang button.active{opacity:1;}
 
-/* Layout */
+/* контейнер */
 .wrapper{
-display:flex;
-flex-direction:column;
-align-items:center;
-margin-top:40px;
-}
-
-.logo{
-width:90%;
+width:100%;
 max-width:420px;
+padding:70px 15px 30px;
+text-align:center;
+}
+
+/* логотип */
+.logo{
+width:100%;
+max-width:380px;
 height:auto;
-margin-bottom:20px;
+margin:0 auto 20px;
+display:block;
 }
 
+/* стекло */
 .box{
-background:rgba(255,255,255,0.18);
-backdrop-filter:blur(20px);
-padding:30px;
+background:rgba(255,255,255,0.75);
 border-radius:20px;
-width:340px;
+padding:25px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
 }
 
-/* Pages */
+/* страницы */
 .page{display:none;}
 .page.active{display:block;}
 
-h1{text-align:center;}
+h1{
+margin-bottom:15px;
+font-size:22px;
+}
 
+/* контакты */
 .item{
 display:flex;
-gap:12px;
-margin:12px 0;
+align-items:center;
+gap:10px;
+margin:10px 0;
 color:#000;
 text-decoration:none;
+font-size:14px;
 }
-.item img{width:24px;}
 
+.item img{width:22px;}
+
+/* кнопки */
 .btn{
 width:100%;
 padding:12px;
@@ -92,13 +112,30 @@ background:#000;
 color:#fff;
 border:none;
 border-radius:12px;
+font-size:14px;
 }
 
-/* Price */
+/* прайс */
 .section{margin:15px 0;}
+.section b{
+display:block;
+border-bottom:1px solid #000;
+margin-bottom:5px;
+}
+
 .row{
 display:flex;
 justify-content:space-between;
+font-size:14px;
+margin:3px 0;
+}
+
+/* карта */
+iframe{
+width:100%;
+border:0;
+border-radius:12px;
+margin-top:10px;
 }
 </style>
 </head>
@@ -121,7 +158,6 @@ justify-content:space-between;
 
 <!-- HOME -->
 <div id="home" class="page active">
-
 <h1 id="title"></h1>
 
 <a href="https://instagram.com/blikstudio_venray" class="item">
@@ -136,18 +172,12 @@ justify-content:space-between;
 <img src="Whatsapp.jpg"> +31684553243
 </a>
 
-<div class="item">
-<img src="Mail.jpg">
-</div>
-
 <button class="btn" onclick="showPage('price')" id="priceBtn"></button>
 <button class="btn" onclick="showPage('google')" id="mapBtn"></button>
-
 </div>
 
 <!-- PRICE -->
 <div id="price" class="page">
-
 <h1>BLIK STUDIO</h1>
 
 <div class="section">
@@ -158,112 +188,44 @@ justify-content:space-between;
 <div class="row"><span id="b4"></span><span>25€</span></div>
 </div>
 
-<div style="text-align:center;margin-top:10px;">
+<div style="margin-top:10px;">
 +31684553243<br>
 PLATAANSTRAAT 15 5802 EH VENRAY
 </div>
 
 <button class="btn" onclick="showPage('home')" id="backBtn"></button>
-
 </div>
 
 <!-- GOOGLE -->
 <div id="google" class="page">
-
 <h1 id="googleTitle"></h1>
 
 <a href="https://share.google/KJYIucArFn30dgOKE" class="btn" target="_blank" id="openGoogle"></a>
 
-<iframe
-src="https://maps.google.com/maps?q=Plataanstraat%2015%205802%20EH%20Venray&output=embed"
-width="100%" height="260"></iframe>
+<iframe src="https://maps.google.com/maps?q=Plataanstraat%2015%205802%20EH%20Venray&output=embed" height="260"></iframe>
 
 <button class="btn" onclick="showPage('home')" id="backBtn2"></button>
-
 </div>
 
 </div>
 </div>
 
 <script>
-
 function showPage(id){
 document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
 document.getElementById(id).classList.add('active');
 }
 
-/* Translations */
 const texts={
-ru:{
-title:"КОНТАКТЫ",
-price:"ПРАЙС",
-map:"ОТЗЫВЫ И КАРТА",
-back:"НАЗАД",
-google:"GOOGLE",
-open:"ОТКРЫТЬ ПРОФИЛЬ",
-brows:"БРОВИ",
-b1:"КОРРЕКЦИЯ",
-b2:"ОКРАШИВАНИЕ",
-b3:"КОРРЕКЦИЯ + ОКРАШИВАНИЕ",
-b4:"ЛАМИНИРОВАНИЕ"
-},
-en:{
-title:"CONTACT",
-price:"PRICE",
-map:"REVIEWS & MAP",
-back:"BACK",
-google:"GOOGLE",
-open:"OPEN PROFILE",
-brows:"BROWS",
-b1:"CORRECTION",
-b2:"COLORING",
-b3:"CORRECTION + COLORING",
-b4:"LAMINATION"
-},
-pl:{
-title:"KONTAKT",
-price:"CENNIK",
-map:"OPINIE I MAPA",
-back:"WSTECZ",
-google:"GOOGLE",
-open:"OTWÓRZ PROFIL",
-brows:"BRWI",
-b1:"KOREKTA",
-b2:"FARBOWANIE",
-b3:"KOREKTA + FARBOWANIE",
-b4:"LAMINACJA"
-},
-nl:{
-title:"CONTACT",
-price:"PRIJS",
-map:"REVIEWS & KAART",
-back:"TERUG",
-google:"GOOGLE",
-open:"PROFIEL OPENEN",
-brows:"WENKBRAUWEN",
-b1:"CORRECTIE",
-b2:"VERVEN",
-b3:"CORRECTIE + VERVEN",
-b4:"LAMINEREN"
-},
-ua:{
-title:"КОНТАКТИ",
-price:"ПРАЙС",
-map:"ВІДГУКИ ТА КАРТА",
-back:"НАЗАД",
-google:"GOOGLE",
-open:"ВІДКРИТИ ПРОФІЛЬ",
-brows:"БРОВИ",
-b1:"КОРЕКЦІЯ",
-b2:"ФАРБУВАННЯ",
-b3:"КОРЕКЦІЯ + ФАРБУВАННЯ",
-b4:"ЛАМІНУВАННЯ"
-}
+ru:{title:"КОНТАКТЫ",price:"ПРАЙС",map:"ОТЗЫВЫ И КАРТА",back:"НАЗАД",google:"GOOGLE",open:"ОТКРЫТЬ ПРОФИЛЬ",brows:"БРОВИ",b1:"КОРРЕКЦИЯ",b2:"ОКРАШИВАНИЕ",b3:"КОРРЕКЦИЯ + ОКРАШИВАНИЕ",b4:"ЛАМИНИРОВАНИЕ"},
+en:{title:"CONTACT",price:"PRICE",map:"REVIEWS & MAP",back:"BACK",google:"GOOGLE",open:"OPEN PROFILE",brows:"BROWS",b1:"CORRECTION",b2:"COLORING",b3:"CORRECTION + COLORING",b4:"LAMINATION"},
+pl:{title:"KONTAKT",price:"CENNIK",map:"OPINIE I MAPA",back:"WSTECZ",google:"GOOGLE",open:"OTWÓRZ PROFIL",brows:"BRWI",b1:"KOREKTA",b2:"FARBOWANIE",b3:"KOREKTA + FARBOWANIE",b4:"LAMINACJA"},
+nl:{title:"CONTACT",price:"PRIJS",map:"REVIEWS & KAART",back:"TERUG",google:"GOOGLE",open:"PROFIEL OPENEN",brows:"WENKBRAUWEN",b1:"CORRECTIE",b2:"VERVEN",b3:"CORRECTIE + VERVEN",b4:"LAMINEREN"},
+ua:{title:"КОНТАКТИ",price:"ПРАЙС",map:"ВІДГУКИ ТА КАРТА",back:"НАЗАД",google:"GOOGLE",open:"ВІДКРИТИ ПРОФІЛЬ",brows:"БРОВИ",b1:"КОРЕКЦІЯ",b2:"ФАРБУВАННЯ",b3:"КОРЕКЦІЯ + ФАРБУВАННЯ",b4:"ЛАМІНУВАННЯ"}
 };
 
 function setLang(lang,el){
 localStorage.setItem("lang",lang);
-
 document.querySelectorAll('.lang button').forEach(b=>b.classList.remove('active'));
 if(el) el.classList.add('active');
 
@@ -274,7 +236,6 @@ document.getElementById("backBtn").innerText=texts[lang].back;
 document.getElementById("backBtn2").innerText=texts[lang].back;
 document.getElementById("googleTitle").innerText=texts[lang].google;
 document.getElementById("openGoogle").innerText=texts[lang].open;
-
 document.getElementById("brows").innerText=texts[lang].brows;
 document.getElementById("b1").innerText=texts[lang].b1;
 document.getElementById("b2").innerText=texts[lang].b2;
@@ -282,12 +243,10 @@ document.getElementById("b3").innerText=texts[lang].b3;
 document.getElementById("b4").innerText=texts[lang].b4;
 }
 
-/* Load saved language */
 window.onload=function(){
 let lang=localStorage.getItem("lang")||"ua";
 setLang(lang);
 }
-
 </script>
 
 </body>
