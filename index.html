@@ -1,229 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BLIK STUDIO</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google verification -->
+<meta name="google-site-verification" content="XXXX" />
+
+<title>Blik Studio | Beauty Salon Venray</title>
+<meta name="description" content="Blik Studio in Venray. Brows, lashes, lamination and beauty services. Book your appointment today.">
 
 <style>
-body{
-margin:0;
-font-family:Helvetica, Arial, sans-serif;
-color:#111;
-background:url("background.jpg") center/cover fixed no-repeat;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    color: #111;
 }
 
-/* HERO */
-.hero{
-height:95vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 20px;
 }
 
-.logo{
-width:260px;
-margin-bottom:40px;
+header {
+    text-align: center;
+    padding: 80px 20px;
+    background: #f7f7f7;
 }
 
-/* BUTTON */
-.btn{
-background:black;
-color:white;
-padding:16px 32px;
-border-radius:30px;
-text-decoration:none;
-font-size:14px;
-letter-spacing:1px;
+h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
 }
 
-/* LANGUAGE */
-.lang{
-margin-top:20px;
-}
-.lang button{
-margin:3px;
-padding:6px 10px;
-border:none;
-background:black;
-color:white;
-border-radius:6px;
-font-size:12px;
+h2 {
+    margin-top: 40px;
 }
 
-/* CONTENT BLOCK */
-.section{
-background:white;
-max-width:520px;
-margin:40px auto;
-padding:25px;
-border-radius:14px;
-box-shadow:0 10px 25px rgba(0,0,0,0.1);
+.services {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
 }
 
-.section h2{
-text-align:center;
-margin-bottom:15px;
-letter-spacing:1px;
+.service {
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    background: #fff;
 }
 
-.service{
-display:flex;
-justify-content:space-between;
-padding:8px 0;
-border-bottom:1px solid #eee;
-font-size:15px;
+.contact {
+    text-align: center;
+    margin-top: 50px;
+    padding: 40px;
+    background: #f7f7f7;
 }
 
-/* REVIEWS */
-.review{
-background:#f5f5f5;
-padding:10px;
-border-radius:8px;
-margin-bottom:10px;
+.button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 25px;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
 }
 
-/* FORM */
-input, textarea{
-width:100%;
-padding:8px;
-margin-top:6px;
-border-radius:6px;
-border:1px solid #ccc;
-}
-
-/* WHATSAPP */
-.whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:black;
-color:white;
-padding:12px 18px;
-border-radius:30px;
-text-decoration:none;
-box-shadow:0 10px 20px rgba(0,0,0,0.3);
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: #666;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<div class="hero">
-<img src="Logo.png" class="logo">
+<header>
+    <h1>Blik Studio</h1>
+    <p>Beauty Salon in Venray</p>
+    <a class="button" href="https://wa.me/">Book appointment</a>
+</header>
 
-<a class="btn" href="https://calendar.app.google/c4vEniQTJLtWwp8VA" target="_blank">
-BOOK ONLINE
-</a>
+<div class="container">
 
-<div class="lang">
-<button onclick="setLang('nl')">NL</button>
-<button onclick="setLang('en')">EN</button>
-<button onclick="setLang('ru')">RU</button>
-<button onclick="setLang('ua')">UA</button>
-<button onclick="setLang('pl')">PL</button>
-</div>
-</div>
+    <h2>Services</h2>
+    <div class="services">
+        <div class="service">
+            <h3>Brows</h3>
+            <p>Correction, tinting, lamination</p>
+        </div>
 
-<!-- BROWS -->
-<div class="section">
-<h2 data-lang="brows">Brows</h2>
+        <div class="service">
+            <h3>Lashes</h3>
+            <p>Lash lift and tint</p>
+        </div>
 
-<div class="service"><span data-lang="b1">Correction</span><span>15€</span></div>
-<div class="service"><span data-lang="b2">Tint</span><span>18€</span></div>
-<div class="service"><span data-lang="b3">Correction + tint</span><span>25€</span></div>
-<div class="service"><span data-lang="b4">Lamination</span><span>25€</span></div>
-</div>
+        <div class="service">
+            <h3>Packages</h3>
+            <p>Full beauty packages available</p>
+        </div>
 
-<!-- LASHES -->
-<div class="section">
-<h2 data-lang="lashes">Lashes</h2>
+        <div class="service">
+            <h3>Professional care</h3>
+            <p>High quality products and service</p>
+        </div>
+    </div>
 
-<div class="service"><span data-lang="l1">Tint</span><span>15€</span></div>
-<div class="service"><span data-lang="l2">Lamination</span><span>40€</span></div>
-</div>
+    <div class="contact">
+        <h2>Contact</h2>
+        <p>Venray, Netherlands</p>
+        <a class="button" href="https://wa.me/">WhatsApp</a>
+    </div>
 
-<!-- EXTENSIONS -->
-<div class="section">
-<h2 data-lang="ext">Extensions</h2>
-
-<div class="service"><span>1:1</span><span>45€</span></div>
-<div class="service"><span>2D / 3D</span><span>50€</span></div>
-<div class="service"><span>4D–6D</span><span>60€</span></div>
-<div class="service"><span data-lang="remove">Removal</span><span>10€</span></div>
 </div>
 
-<!-- PACKAGES -->
-<div class="section">
-<h2 data-lang="pack">Packages</h2>
-
-<div class="service"><span data-lang="p1">Brows full package</span><span>40€</span></div>
-<div class="service"><span data-lang="p2">Brows + lashes lamination</span><span>60€</span></div>
-<div class="service"><span data-lang="p3">Brows + lashes tint</span><span>35€</span></div>
-</div>
-
-<!-- REVIEWS -->
-<div class="section">
-<h2 data-lang="reviews">Reviews</h2>
-
-<div id="reviewList"></div>
-
-<input id="name" placeholder="Name">
-<textarea id="text" placeholder="Your review"></textarea>
-<a class="btn" onclick="addReview()">Send</a>
-</div>
-
-<!-- WHATSAPP -->
-<a class="whatsapp" href="https://wa.me/380979516397" target="_blank">
-WhatsApp
-</a>
-
-<script>
-function addReview(){
-let name=document.getElementById("name").value;
-let text=document.getElementById("text").value;
-if(!name||!text)return;
-
-let reviews=JSON.parse(localStorage.getItem("reviews")||"[]");
-reviews.push({name,text});
-localStorage.setItem("reviews",JSON.stringify(reviews));
-showReviews();
-document.getElementById("name").value="";
-document.getElementById("text").value="";
-}
-
-function showReviews(){
-let reviews=JSON.parse(localStorage.getItem("reviews")||"[]");
-let list=document.getElementById("reviewList");
-list.innerHTML="";
-reviews.forEach(r=>{
-list.innerHTML+=`<div class="review"><b>${r.name}</b><br>${r.text}</div>`;
-});
-}
-showReviews();
-
-/* LANGUAGES */
-function setLang(lang){
-const t={
-ru:{brows:"Брови",lashes:"Ресницы",ext:"Наращивание",pack:"Комплексы",reviews:"Отзывы",
-b1:"Коррекция",b2:"Окрашивание",b3:"Коррекция + окрашивание",b4:"Ламинирование",
-l1:"Окрашивание",l2:"Ламинирование",remove:"Снятие",
-p1:"Ламинирование + коррекция + окрашивание",p2:"Ламинирование бровей + ресниц",p3:"Окрашивание бровей + ресниц"},
-
-ua:{brows:"Брови",lashes:"Вії",ext:"Нарощування",pack:"Комплекси",reviews:"Відгуки",
-b1:"Корекція",b2:"Фарбування",b3:"Корекція + фарбування",b4:"Ламінування",
-l1:"Фарбування",l2:"Ламінування",remove:"Зняття",
-p1:"Ламінування + корекція + фарбування",p2:"Ламінування брів + вій",p3:"Фарбування брів + вій"}
-};
-
-document.querySelectorAll("[data-lang]").forEach(el=>{
-let key=el.getAttribute("data-lang");
-if(t[lang] && t[lang][key]) el.innerText=t[lang][key];
-});
-}
-</script>
+<footer>
+    © 2026 Blik Studio | blikstudio.nl
+</footer>
 
 </body>
 </html>
