@@ -29,6 +29,7 @@ backdrop-filter:blur(3px);
 z-index:-1;
 }
 
+/* Languages */
 .lang{
 position:fixed;
 top:15px;
@@ -100,15 +101,13 @@ border-radius:12px;
 font-size:14px;
 }
 
-/* price */
+/* Price */
 .section{margin:18px 0;}
-
 .section-title{
 border-bottom:1px solid #000;
 margin-bottom:8px;
 font-weight:600;
 }
-
 .row{
 display:flex;
 justify-content:space-between;
@@ -132,7 +131,6 @@ margin:4px 0;
 </div>
 
 <div class="wrapper">
-
 <img src="Logotip.jpg" class="logo">
 
 <div class="box">
@@ -145,7 +143,7 @@ margin:4px 0;
 <img src="Instagram.jpg"> BLIKSTUDIO_VENRAY
 </a>
 
-<a href="#" class="item">
+<a href="https://facebook.com/" class="item">
 <img src="Facebook.jpg"> BLIKSTUDIO VENRAY
 </a>
 
@@ -155,8 +153,20 @@ margin:4px 0;
 
 <div class="note" id="prepayNote"></div>
 
+<button class="btn" onclick="showPage('booking')" id="bookBtn"></button>
 <button class="btn" onclick="showPage('price')" id="priceBtn"></button>
 <button class="btn" onclick="showPage('map')" id="mapBtn"></button>
+</div>
+
+<!-- BOOKING -->
+<div id="booking" class="page">
+<h1 id="bookingTitle"></h1>
+
+<a href="https://wa.me/31684553243?text=Hello%20I%20want%20to%20book" class="btn" target="_blank">WHATSAPP</a>
+<a href="https://instagram.com/blikstudio_venray" class="btn" target="_blank">INSTAGRAM</a>
+<a href="https://facebook.com/" class="btn" target="_blank">FACEBOOK</a>
+
+<button class="btn" onclick="showPage('home')" id="backBtn3"></button>
 </div>
 
 <!-- PRICE -->
@@ -203,8 +213,7 @@ PLATAANSTRAAT 15 5802 EH VENRAY
 
 <!-- MAP -->
 <div id="map" class="page">
-
-<h1 id="mapTitle"></h1>
+<h1 id="mapTitle">GOOGLE</h1>
 
 <a href="https://share.google/KJYIucArFn30dgOKE" class="btn" target="_blank" id="openGoogle"></a>
 
@@ -224,12 +233,13 @@ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
 document.getElementById(id).classList.add('active');
 }
 
-/* translations */
 const t={
 ua:{
 contact:"КОНТАКТИ",
 price:"ПРАЙС",
 map:"ВІДГУКИ ТА КАРТА",
+book:"ЗАПИСАТИСЯ",
+booking:"ОБЕРІТЬ СПОСІБ ЗАПИСУ",
 back:"НАЗАД",
 open:"ВІДКРИТИ ПРОФІЛЬ",
 prepay:"ЗАПИС ЗДІЙСНЮЄТЬСЯ ПО ПЕРЕДОПЛАТІ",
@@ -256,50 +266,50 @@ c3:"ФАРБУВАННЯ БРІВ + ВІЙ"
 function setLang(lang,btn){
 localStorage.setItem("lang",lang);
 
-/* active button */
 document.querySelectorAll('.lang button').forEach(b=>{
 b.classList.remove('active');
 if(b.innerText.toLowerCase()==lang) b.classList.add('active');
 });
 
-/* texts */
-document.getElementById("contactTitle").innerText=t[lang].contact;
-document.getElementById("priceBtn").innerText=t[lang].price;
-document.getElementById("mapBtn").innerText=t[lang].map;
-document.getElementById("backBtn").innerText=t[lang].back;
-document.getElementById("backBtn2").innerText=t[lang].back;
-document.getElementById("mapTitle").innerText="GOOGLE";
-document.getElementById("openGoogle").innerText=t[lang].open;
-document.getElementById("prepayNote").innerText=t[lang].prepay;
+let L=t[lang];
 
-document.getElementById("brows_title").innerText=t[lang].brows;
-document.getElementById("b1").innerText=t[lang].b1;
-document.getElementById("b2").innerText=t[lang].b2;
-document.getElementById("b3").innerText=t[lang].b3;
-document.getElementById("b4").innerText=t[lang].b4;
+document.getElementById("contactTitle").innerText=L.contact;
+document.getElementById("priceBtn").innerText=L.price;
+document.getElementById("mapBtn").innerText=L.map;
+document.getElementById("bookBtn").innerText=L.book;
+document.getElementById("bookingTitle").innerText=L.booking;
+document.getElementById("backBtn").innerText=L.back;
+document.getElementById("backBtn2").innerText=L.back;
+document.getElementById("backBtn3").innerText=L.back;
+document.getElementById("openGoogle").innerText=L.open;
+document.getElementById("prepayNote").innerText=L.prepay;
 
-document.getElementById("lashes_title").innerText=t[lang].lashes;
-document.getElementById("l1").innerText=t[lang].l1;
-document.getElementById("l2").innerText=t[lang].l2;
+document.getElementById("brows_title").innerText=L.brows;
+document.getElementById("b1").innerText=L.b1;
+document.getElementById("b2").innerText=L.b2;
+document.getElementById("b3").innerText=L.b3;
+document.getElementById("b4").innerText=L.b4;
 
-document.getElementById("ext_title").innerText=t[lang].ext;
-document.getElementById("e1").innerText=t[lang].e1;
-document.getElementById("e2").innerText=t[lang].e2;
-document.getElementById("e3").innerText=t[lang].e3;
-document.getElementById("e4").innerText=t[lang].e4;
+document.getElementById("lashes_title").innerText=L.lashes;
+document.getElementById("l1").innerText=L.l1;
+document.getElementById("l2").innerText=L.l2;
 
-document.getElementById("combo_title").innerText=t[lang].combo;
-document.getElementById("c1").innerText=t[lang].c1;
-document.getElementById("c2").innerText=t[lang].c2;
-document.getElementById("c3").innerText=t[lang].c3;
+document.getElementById("ext_title").innerText=L.ext;
+document.getElementById("e1").innerText=L.e1;
+document.getElementById("e2").innerText=L.e2;
+document.getElementById("e3").innerText=L.e3;
+document.getElementById("e4").innerText=L.e4;
+
+document.getElementById("combo_title").innerText=L.combo;
+document.getElementById("c1").innerText=L.c1;
+document.getElementById("c2").innerText=L.c2;
+document.getElementById("c3").innerText=L.c3;
 }
 
-/* load saved language */
 window.onload=function(){
 let lang=localStorage.getItem("lang") || "ua";
 setLang(lang);
 }
-
 </script>
 
 </body>
