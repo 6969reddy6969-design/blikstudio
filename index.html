@@ -24,18 +24,19 @@ body:after{
 content:"";
 position:fixed;
 inset:0;
-background:rgba(255,255,255,0.25);
+background:rgba(255,255,255,.35);
 backdrop-filter:blur(3px);
 z-index:-1;
 }
 
-/* Languages */
+/* language */
 .lang{
 position:fixed;
 top:15px;
 right:15px;
 display:flex;
 gap:6px;
+z-index:100;
 }
 
 .lang button{
@@ -63,7 +64,7 @@ margin-bottom:20px;
 }
 
 .box{
-background:rgba(255,255,255,.85);
+background:rgba(255,255,255,.9);
 border-radius:20px;
 padding:25px;
 }
@@ -85,7 +86,7 @@ font-size:14px;
 .item img{width:22px;}
 
 .note{
-margin:15px 0 5px;
+margin:10px 0;
 font-size:12px;
 opacity:.7;
 }
@@ -93,7 +94,7 @@ opacity:.7;
 .btn{
 width:100%;
 padding:12px;
-margin-top:12px;
+margin-top:10px;
 background:#000;
 color:#fff;
 border:none;
@@ -101,7 +102,7 @@ border-radius:12px;
 font-size:14px;
 }
 
-/* Price */
+/* price */
 .section{margin:18px 0;}
 .section-title{
 border-bottom:1px solid #000;
@@ -111,12 +112,30 @@ font-weight:600;
 .row{
 display:flex;
 justify-content:space-between;
-gap:10px;
 font-size:14px;
 margin:4px 0;
 }
-.row span:first-child{flex:1;text-align:left;}
-.row span:last-child{min-width:45px;text-align:right;}
+
+/* WhatsApp floating */
+.whatsapp-float{
+position:fixed;
+right:18px;
+bottom:18px;
+width:60px;
+height:60px;
+border-radius:50%;
+background:#25D366;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 4px 12px rgba(0,0,0,0.3);
+z-index:999;
+}
+
+.whatsapp-float img{
+width:32px;
+height:32px;
+}
 </style>
 </head>
 
@@ -137,6 +156,7 @@ margin:4px 0;
 
 <!-- HOME -->
 <div id="home" class="page active">
+
 <h1 id="contactTitle"></h1>
 
 <a href="https://instagram.com/blikstudio_venray" class="item">
@@ -147,7 +167,7 @@ margin:4px 0;
 <img src="Facebook.jpg"> BLIKSTUDIO VENRAY
 </a>
 
-<a href="https://wa.me/31684553243" class="item">
+<a href="tel:+31684553243" class="item">
 <img src="Whatsapp.jpg"> +31684553243
 </a>
 
@@ -156,13 +176,14 @@ margin:4px 0;
 <button class="btn" onclick="showPage('booking')" id="bookBtn"></button>
 <button class="btn" onclick="showPage('price')" id="priceBtn"></button>
 <button class="btn" onclick="showPage('map')" id="mapBtn"></button>
+
 </div>
 
 <!-- BOOKING -->
 <div id="booking" class="page">
 <h1 id="bookingTitle"></h1>
 
-<a href="https://wa.me/31684553243?text=Hello%20I%20want%20to%20book" class="btn" target="_blank">WHATSAPP</a>
+<a href="https://wa.me/31684553243" class="btn" target="_blank">WHATSAPP</a>
 <a href="https://instagram.com/blikstudio_venray" class="btn" target="_blank">INSTAGRAM</a>
 <a href="https://facebook.com/" class="btn" target="_blank">FACEBOOK</a>
 
@@ -209,11 +230,12 @@ PLATAANSTRAAT 15 5802 EH VENRAY
 </div>
 
 <button class="btn" onclick="showPage('home')" id="backBtn"></button>
+
 </div>
 
 <!-- MAP -->
 <div id="map" class="page">
-<h1 id="mapTitle">GOOGLE</h1>
+<h1 id="mapTitle"></h1>
 
 <a href="https://share.google/KJYIucArFn30dgOKE" class="btn" target="_blank" id="openGoogle"></a>
 
@@ -226,89 +248,62 @@ width="100%" height="260" style="border:0;border-radius:12px;margin-top:10px;"><
 </div>
 </div>
 
-<script>
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/31684553243" class="whatsapp-float" target="_blank">
+<img src="Whatsapp.jpg">
+</a>
 
+<script>
 function showPage(id){
 document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
 document.getElementById(id).classList.add('active');
 }
 
+/* translations */
 const t={
-ua:{
-contact:"КОНТАКТИ",
-price:"ПРАЙС",
-map:"ВІДГУКИ ТА КАРТА",
-book:"ЗАПИСАТИСЯ",
-booking:"ОБЕРІТЬ СПОСІБ ЗАПИСУ",
-back:"НАЗАД",
-open:"ВІДКРИТИ ПРОФІЛЬ",
-prepay:"ЗАПИС ЗДІЙСНЮЄТЬСЯ ПО ПЕРЕДОПЛАТІ",
-brows:"БРОВИ",
-b1:"КОРЕКЦІЯ (ВІСК / ПІНЦЕТ)",
-b2:"ФАРБУВАННЯ",
-b3:"КОРЕКЦІЯ + ФАРБУВАННЯ",
-b4:"ЛАМІНУВАННЯ",
-lashes:"ВІЇ",
-l1:"ФАРБУВАННЯ",
-l2:"ЛАМІНУВАННЯ",
-ext:"НАРОЩУВАННЯ ВІЙ",
-e1:"КЛАСИКА 1:1",
-e2:"2D / 3D",
-e3:"4D / 5D / 6D",
-e4:"ЗНЯТТЯ",
-combo:"КОМПЛЕКСНІ ПРОЦЕДУРИ",
-c1:"ЛАМІНУВАННЯ + КОРЕКЦІЯ + ФАРБУВАННЯ БРІВ",
-c2:"ЛАМІНУВАННЯ БРІВ + ВІЙ",
-c3:"ФАРБУВАННЯ БРІВ + ВІЙ"
-}
+ua:{contact:"КОНТАКТИ",price:"ПРАЙС",map:"ВІДГУКИ ТА КАРТА",book:"ЗАПИСАТИСЯ",booking:"ОБЕРІТЬ СПОСІБ ЗАПИСУ",back:"НАЗАД",open:"ВІДКРИТИ ПРОФІЛЬ",prepay:"ЗАПИС ЗДІЙСНЮЄТЬСЯ ПО ПЕРЕДОПЛАТІ",brows:"БРОВИ",b1:"КОРЕКЦІЯ (ВІСК / ПІНЦЕТ)",b2:"ФАРБУВАННЯ",b3:"КОРЕКЦІЯ + ФАРБУВАННЯ",b4:"ЛАМІНУВАННЯ",lashes:"ВІЇ",l1:"ФАРБУВАННЯ",l2:"ЛАМІНУВАННЯ",ext:"НАРОЩУВАННЯ ВІЙ",e1:"КЛАСИКА 1:1",e2:"2D / 3D",e3:"4D / 5D / 6D",e4:"ЗНЯТТЯ",combo:"КОМПЛЕКСНІ ПРОЦЕДУРИ",c1:"ЛАМІНУВАННЯ + КОРЕКЦІЯ + ФАРБУВАННЯ БРІВ",c2:"ЛАМІНУВАННЯ БРІВ + ВІЙ",c3:"ФАРБУВАННЯ БРІВ + ВІЙ"},
+ru:{contact:"КОНТАКТЫ",price:"ПРАЙС",map:"ОТЗЫВЫ И КАРТА",book:"ЗАПИСАТЬСЯ",booking:"ВЫБЕРИТЕ СПОСОБ ЗАПИСИ",back:"НАЗАД",open:"ОТКРЫТЬ ПРОФИЛЬ",prepay:"ЗАПИСЬ ПО ПРЕДОПЛАТЕ",brows:"БРОВИ",b1:"КОРРЕКЦИЯ",b2:"ОКРАШИВАНИЕ",b3:"КОРРЕКЦИЯ + ОКРАШИВАНИЕ",b4:"ЛАМИНИРОВАНИЕ",lashes:"РЕСНИЦЫ",l1:"ОКРАШИВАНИЕ",l2:"ЛАМИНИРОВАНИЕ",ext:"НАРАЩИВАНИЕ",e1:"КЛАССИКА",e2:"2D / 3D",e3:"4D / 5D / 6D",e4:"СНЯТИЕ",combo:"КОМПЛЕКС",c1:"ЛАМИНИРОВАНИЕ + КОРРЕКЦИЯ + ОКРАШИВАНИЕ",c2:"ЛАМИНИРОВАНИЕ БРОВЕЙ + РЕСНИЦ",c3:"ОКРАШИВАНИЕ БРОВЕЙ + РЕСНИЦ"}
 };
 
 function setLang(lang,btn){
 localStorage.setItem("lang",lang);
+document.querySelectorAll('.lang button').forEach(b=>b.classList.remove('active'));
+if(btn) btn.classList.add('active');
 
-document.querySelectorAll('.lang button').forEach(b=>{
-b.classList.remove('active');
-if(b.innerText.toLowerCase()==lang) b.classList.add('active');
-});
+let L=t[lang]||t.ua;
 
-let L=t[lang];
+contactTitle.innerText=L.contact;
+priceBtn.innerText=L.price;
+mapBtn.innerText=L.map;
+bookBtn.innerText=L.book;
+bookingTitle.innerText=L.booking;
+backBtn.innerText=L.back;
+backBtn2.innerText=L.back;
+backBtn3.innerText=L.back;
+openGoogle.innerText=L.open;
+prepayNote.innerText=L.prepay;
 
-document.getElementById("contactTitle").innerText=L.contact;
-document.getElementById("priceBtn").innerText=L.price;
-document.getElementById("mapBtn").innerText=L.map;
-document.getElementById("bookBtn").innerText=L.book;
-document.getElementById("bookingTitle").innerText=L.booking;
-document.getElementById("backBtn").innerText=L.back;
-document.getElementById("backBtn2").innerText=L.back;
-document.getElementById("backBtn3").innerText=L.back;
-document.getElementById("openGoogle").innerText=L.open;
-document.getElementById("prepayNote").innerText=L.prepay;
-
-document.getElementById("brows_title").innerText=L.brows;
-document.getElementById("b1").innerText=L.b1;
-document.getElementById("b2").innerText=L.b2;
-document.getElementById("b3").innerText=L.b3;
-document.getElementById("b4").innerText=L.b4;
-
-document.getElementById("lashes_title").innerText=L.lashes;
-document.getElementById("l1").innerText=L.l1;
-document.getElementById("l2").innerText=L.l2;
-
-document.getElementById("ext_title").innerText=L.ext;
-document.getElementById("e1").innerText=L.e1;
-document.getElementById("e2").innerText=L.e2;
-document.getElementById("e3").innerText=L.e3;
-document.getElementById("e4").innerText=L.e4;
-
-document.getElementById("combo_title").innerText=L.combo;
-document.getElementById("c1").innerText=L.c1;
-document.getElementById("c2").innerText=L.c2;
-document.getElementById("c3").innerText=L.c3;
+brows_title.innerText=L.brows;
+b1.innerText=L.b1;
+b2.innerText=L.b2;
+b3.innerText=L.b3;
+b4.innerText=L.b4;
+lashes_title.innerText=L.lashes;
+l1.innerText=L.l1;
+l2.innerText=L.l2;
+ext_title.innerText=L.ext;
+e1.innerText=L.e1;
+e2.innerText=L.e2;
+e3.innerText=L.e3;
+e4.innerText=L.e4;
+combo_title.innerText=L.combo;
+c1.innerText=L.c1;
+c2.innerText=L.c2;
+c3.innerText=L.c3;
 }
 
 window.onload=function(){
-let lang=localStorage.getItem("lang") || "ua";
-setLang(lang);
+setLang(localStorage.getItem("lang")||"ua");
 }
 </script>
 
