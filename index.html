@@ -8,51 +8,43 @@
 body{
 margin:0;
 font-family:Arial, sans-serif;
-background:url("background.jpg") center/cover fixed;
+background:url('background.jpg') center/cover fixed;
 color:#111;
-text-align:center;
 }
 
-/* Внутренняя рамка */
-.container{
-padding:20px;
+.wrapper{
 max-width:520px;
-margin:20px auto;
-background:rgba(255,255,255,0.92);
+margin:15px auto;
+background:rgba(255,255,255,0.95);
 border:3px solid black;
 border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
+padding:15px;
 }
 
-/* Лого большое */
 .logo{
 width:100%;
-max-height:420px;
-object-fit:contain;
-border-radius:10px;
-margin-bottom:20px;
+margin-bottom:10px;
 }
 
-/* WhatsApp */
 .btn{
 display:block;
 background:black;
 color:white;
-padding:16px;
+padding:14px;
+text-align:center;
 text-decoration:none;
-border-radius:10px;
-margin:10px 0 15px;
-font-size:18px;
-font-weight:bold;
+border-radius:8px;
+margin:10px 0;
+font-size:17px;
 }
 
-/* Языки */
 .lang-switch{
-margin-bottom:15px;
+text-align:center;
+margin:10px 0;
 }
 
 .lang-switch button{
-padding:7px 12px;
+padding:6px 10px;
 margin:3px;
 border:none;
 background:black;
@@ -61,19 +53,16 @@ border-radius:6px;
 font-size:13px;
 }
 
-/* Блоки */
 .section{
 background:white;
-padding:18px;
-margin-bottom:15px;
-border-radius:12px;
-box-shadow:0 4px 12px rgba(0,0,0,0.08);
-text-align:left;
+padding:15px;
+margin-top:12px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.05);
 }
 
 .section h2{
 margin-top:0;
-font-size:18px;
 border-bottom:1px solid #eee;
 padding-bottom:5px;
 }
@@ -82,34 +71,42 @@ padding-bottom:5px;
 display:flex;
 justify-content:space-between;
 margin:6px 0;
-font-size:15px;
 }
 
-/* Отзывы */
 .review{
-background:white;
-padding:15px;
-margin:10px 0;
-border-radius:10px;
-box-shadow:0 4px 10px rgba(0,0,0,0.05);
-text-align:left;
+border-bottom:1px solid #eee;
+padding:5px 0;
 font-size:14px;
+}
+
+input, textarea{
+width:100%;
+padding:8px;
+margin-top:5px;
+border-radius:6px;
+border:1px solid #ccc;
 }
 
 .footer{
+text-align:center;
+margin-top:15px;
 font-size:14px;
 color:#555;
-margin-top:15px;
 }
 </style>
 </head>
 
 <body>
-<div class="container">
+
+<div class="wrapper">
 
 <img src="Logo.jpg" class="logo">
 
-<a class="btn" href="https://wa.me/380979516397" id="whatsappBtn">
+<a class="btn" href="https://calendar.app.google/c4vEniQTJLtWwp8VA" target="_blank" data-lang="book">
+ONLINE BOOKING
+</a>
+
+<a class="btn" href="https://wa.me/380979516397" target="_blank">
 WHATSAPP
 </a>
 
@@ -121,166 +118,137 @@ WHATSAPP
 <button onclick="setLang('pl')">PL</button>
 </div>
 
-<!-- УСЛУГИ -->
 <div class="section">
-<h2 id="browsTitle">Wenkbrauwen</h2>
-<div class="price"><span id="b1">Correctie</span><span>15€</span></div>
-<div class="price"><span id="b2">Verven</span><span>18€</span></div>
-<div class="price"><span id="b3">Correctie + verven</span><span>25€</span></div>
-<div class="price"><span id="b4">Laminatie</span><span>25€</span></div>
+<h2 data-lang="brows">Wenkbrauwen</h2>
+<div class="price"><span data-lang="corr">Correctie</span><span>15€</span></div>
+<div class="price"><span data-lang="color">Verven</span><span>18€</span></div>
+<div class="price"><span data-lang="corrcolor">Correctie + verven</span><span>25€</span></div>
+<div class="price"><span data-lang="lam">Laminatie</span><span>25€</span></div>
 </div>
 
 <div class="section">
-<h2 id="lashesTitle">Wimpers</h2>
-<div class="price"><span id="l1">Verven</span><span>15€</span></div>
-<div class="price"><span id="l2">Laminatie</span><span>40€</span></div>
+<h2 data-lang="lashes">Wimpers</h2>
+<div class="price"><span data-lang="color">Verven</span><span>15€</span></div>
+<div class="price"><span data-lang="lam">Laminatie</span><span>40€</span></div>
 </div>
 
 <div class="section">
-<h2 id="extTitle">Extensions</h2>
+<h2 data-lang="ext">Extensions</h2>
 <div class="price"><span>1:1</span><span>45€</span></div>
 <div class="price"><span>2D / 3D</span><span>50€</span></div>
-<div class="price"><span>4D / 5D / 6D</span><span>60€</span></div>
-<div class="price"><span id="remove">Verwijderen</span><span>10€</span></div>
+<div class="price"><span>4D–6D</span><span>60€</span></div>
+<div class="price"><span data-lang="remove">Verwijderen</span><span>10€</span></div>
 </div>
 
 <div class="section">
-<h2 id="comboTitle">Combinaties</h2>
-<div class="price"><span id="c1">Laminatie + correctie + verven</span><span>40€</span></div>
-<div class="price"><span id="c2">Laminatie wenkbrauwen + wimpers</span><span>60€</span></div>
-<div class="price"><span id="c3">Verven wenkbrauwen + wimpers</span><span>35€</span></div>
-</div>
+<h2 data-lang="reviews">Reviews</h2>
+<div id="reviewList"></div>
 
-<!-- ОТЗЫВЫ -->
-<div class="section">
-<h2 id="reviewTitle">Reviews</h2>
-
-<div class="review">⭐️⭐️⭐️⭐️⭐️  
-Perfecte service! Heel tevreden met mijn wenkbrauwen.</div>
-
-<div class="review">⭐️⭐️⭐️⭐️⭐️  
-Very professional and beautiful result!</div>
-
-<div class="review">⭐️⭐️⭐️⭐️⭐️  
-Дуже гарна робота, рекомендую!</div>
-
+<input id="name" placeholder="Name">
+<textarea id="text" placeholder="Write review"></textarea>
+<button class="btn" onclick="addReview()">Add review</button>
 </div>
 
 <div class="footer">
-PLATAANSTRAAT 15, VENRAY<br>
+PLATAANSTRAAT 15, 5802 EH VENRAY<br>
 +38 097 951 6397
 </div>
 
 </div>
 
 <script>
-function setLang(lang){
-
-const t = {
+const translations = {
 nl:{
+book:"ONLINE BOEKEN",
 brows:"Wenkbrauwen",
 lashes:"Wimpers",
 ext:"Extensions",
-combo:"Combinaties",
-reviews:"Reviews",
-b1:"Correctie",
-b2:"Verven",
-b3:"Correctie + verven",
-b4:"Laminatie",
-l1:"Verven",
-l2:"Laminatie",
+corr:"Correctie",
+color:"Verven",
+corrcolor:"Correctie + verven",
+lam:"Laminatie",
 remove:"Verwijderen",
-c1:"Laminatie + correctie + verven",
-c2:"Laminatie wenkbrauwen + wimpers",
-c3:"Verven wenkbrauwen + wimpers"
+reviews:"Reviews"
 },
 en:{
+book:"BOOK ONLINE",
 brows:"Brows",
 lashes:"Lashes",
 ext:"Extensions",
-combo:"Packages",
-reviews:"Reviews",
-b1:"Correction",
-b2:"Tinting",
-b3:"Correction + tint",
-b4:"Lamination",
-l1:"Tinting",
-l2:"Lamination",
+corr:"Correction",
+color:"Coloring",
+corrcolor:"Correction + coloring",
+lam:"Lamination",
 remove:"Removal",
-c1:"Lamination + correction + tint",
-c2:"Brow + lash lamination",
-c3:"Brow + lash tint"
+reviews:"Reviews"
 },
 ru:{
+book:"ОНЛАЙН ЗАПИСЬ",
 brows:"Брови",
 lashes:"Ресницы",
 ext:"Наращивание",
-combo:"Комплексы",
-reviews:"Отзывы",
-b1:"Коррекция",
-b2:"Окрашивание",
-b3:"Коррекция + окрашивание",
-b4:"Ламинирование",
-l1:"Окрашивание",
-l2:"Ламинирование",
+corr:"Коррекция",
+color:"Окрашивание",
+corrcolor:"Коррекция + окрашивание",
+lam:"Ламинирование",
 remove:"Снятие",
-c1:"Ламинирование + коррекция + окрашивание",
-c2:"Ламинирование бровей и ресниц",
-c3:"Окрашивание бровей и ресниц"
+reviews:"Отзывы"
 },
 ua:{
+book:"ОНЛАЙН ЗАПИС",
 brows:"Брови",
 lashes:"Вії",
 ext:"Нарощування",
-combo:"Комплекси",
-reviews:"Відгуки",
-b1:"Корекція",
-b2:"Фарбування",
-b3:"Корекція + фарбування",
-b4:"Ламінування",
-l1:"Фарбування",
-l2:"Ламінування",
+corr:"Корекція",
+color:"Фарбування",
+corrcolor:"Корекція + фарбування",
+lam:"Ламінування",
 remove:"Зняття",
-c1:"Ламінування + корекція + фарбування",
-c2:"Ламінування брів та вій",
-c3:"Фарбування брів та вій"
+reviews:"Відгуки"
 },
 pl:{
+book:"REZERWACJA ONLINE",
 brows:"Brwi",
 lashes:"Rzęsy",
 ext:"Przedłużanie",
-combo:"Pakiety",
-reviews:"Opinie",
-b1:"Korekta",
-b2:"Farbowanie",
-b3:"Korekta + farbowanie",
-b4:"Laminacja",
-l1:"Farbowanie",
-l2:"Laminacja",
+corr:"Korekta",
+color:"Farbowanie",
+corrcolor:"Korekta + farbowanie",
+lam:"Laminacja",
 remove:"Usuwanie",
-c1:"Laminacja + korekta + farbowanie",
-c2:"Laminacja brwi i rzęs",
-c3:"Farbowanie brwi i rzęs"
+reviews:"Opinie"
 }
 };
 
-document.getElementById("browsTitle").innerText=t[lang].brows;
-document.getElementById("lashesTitle").innerText=t[lang].lashes;
-document.getElementById("extTitle").innerText=t[lang].ext;
-document.getElementById("comboTitle").innerText=t[lang].combo;
-document.getElementById("reviewTitle").innerText=t[lang].reviews;
-
-document.getElementById("b1").innerText=t[lang].b1;
-document.getElementById("b2").innerText=t[lang].b2;
-document.getElementById("b3").innerText=t[lang].b3;
-document.getElementById("b4").innerText=t[lang].b4;
-document.getElementById("l1").innerText=t[lang].l1;
-document.getElementById("l2").innerText=t[lang].l2;
-document.getElementById("remove").innerText=t[lang].remove;
-document.getElementById("c1").innerText=t[lang].c1;
-document.getElementById("c2").innerText=t[lang].c2;
-document.getElementById("c3").innerText=t[lang].c3;
+function setLang(lang){
+document.querySelectorAll("[data-lang]").forEach(el=>{
+el.innerText = translations[lang][el.dataset.lang];
+});
 }
+
+function addReview(){
+let name=document.getElementById("name").value;
+let text=document.getElementById("text").value;
+if(!name || !text) return;
+
+let reviews=JSON.parse(localStorage.getItem("reviews")||"[]");
+reviews.push({name,text});
+localStorage.setItem("reviews",JSON.stringify(reviews));
+showReviews();
+document.getElementById("name").value="";
+document.getElementById("text").value="";
+}
+
+function showReviews(){
+let reviews=JSON.parse(localStorage.getItem("reviews")||"[]");
+let list=document.getElementById("reviewList");
+list.innerHTML="";
+reviews.forEach(r=>{
+list.innerHTML+=`<div class="review"><b>${r.name}</b><br>${r.text}</div>`;
+});
+}
+
+showReviews();
 </script>
 
 </body>
