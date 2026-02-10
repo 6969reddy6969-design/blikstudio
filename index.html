@@ -12,21 +12,7 @@ background:#ffffff;
 color:#111;
 text-align:center;
 }
-<style>
-  .lang-switch{
-  margin-top:10px;
-  text-align:center;
-}
 
-.lang-switch button{
-  padding:6px 10px;
-  margin:3px;
-  border:none;
-  background:black;
-  color:white;
-  border-radius:6px;
-  font-size:13px;
-}
 .container{
 padding:20px;
 max-width:500px;
@@ -39,15 +25,19 @@ border-radius:10px;
 margin-bottom:20px;
 }
 
-h1{
-margin:10px 0 5px;
-font-size:28px;
-letter-spacing:2px;
+.lang-switch{
+margin-top:10px;
+text-align:center;
 }
 
-.subtitle{
-color:#555;
-margin-bottom:25px;
+.lang-switch button{
+padding:6px 10px;
+margin:3px;
+border:none;
+background:black;
+color:white;
+border-radius:6px;
+font-size:13px;
 }
 
 .section{
@@ -93,38 +83,42 @@ margin-top:20px;
 </head>
 
 <body>
+
 <div class="container">
 <img src="Logo.jpg" class="logo">
-<a class="btn" href="https://wa.me/380979516397">
-WHATSAPP
+
+<a class="btn" id="whatsapp" href="https://wa.me/380979516397">
+WhatsApp afspraak
 </a>
+
 <div class="lang-switch">
-  <button onclick="setLang('nl')">NL</button>
-  <button onclick="setLang('en')">EN</button>
-  <button onclick="setLang('ru')">RU</button>
-  <button onclick="setLang('ua')">UA</button>
-  <button onclick="setLang('pl')">PL</button>
-</div>
-<div class="section">
-<h2>Wenkbrauwen</h2>
-<div class="price"><span>Correctie</span><span>15€</span></div>
-<div class="price"><span>Verven</span><span>18€</span></div>
-<div class="price"><span>Correctie + verven</span><span>25€</span></div>
-<div class="price"><span>Laminatie</span><span>25€</span></div>
+<button onclick="setLang('nl')">NL</button>
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('ru')">RU</button>
+<button onclick="setLang('ua')">UA</button>
+<button onclick="setLang('pl')">PL</button>
 </div>
 
 <div class="section">
-<h2>Wimpers</h2>
-<div class="price"><span>Verven</span><span>15€</span></div>
-<div class="price"><span>Laminatie</span><span>40€</span></div>
+<h2 id="browsTitle">Wenkbrauwen</h2>
+<div class="price"><span id="b1">Correctie</span><span>15€</span></div>
+<div class="price"><span id="b2">Verven</span><span>18€</span></div>
+<div class="price"><span id="b3">Correctie + verven</span><span>25€</span></div>
+<div class="price"><span id="b4">Laminatie</span><span>25€</span></div>
 </div>
 
 <div class="section">
-<h2>Extensions</h2>
+<h2 id="lashesTitle">Wimpers</h2>
+<div class="price"><span id="l1">Verven</span><span>15€</span></div>
+<div class="price"><span id="l2">Laminatie</span><span>40€</span></div>
+</div>
+
+<div class="section">
+<h2 id="extTitle">Extensions</h2>
 <div class="price"><span>1:1</span><span>45€</span></div>
 <div class="price"><span>2D / 3D</span><span>50€</span></div>
 <div class="price"><span>4D–6D</span><span>60€</span></div>
-<div class="price"><span>Verwijderen</span><span>10€</span></div>
+<div class="price"><span id="remove">Verwijderen</span><span>10€</span></div>
 </div>
 
 <div class="footer">
@@ -133,6 +127,91 @@ PLATAANSTRAAT 15 5801BM VENRAY<br>
 </div>
 
 </div>
+
+<script>
+function setLang(lang){
+
+const t = {
+nl:{
+btn:"WhatsApp afspraak",
+brows:"Wenkbrauwen",
+b1:"Correctie",
+b2:"Verven",
+b3:"Correctie + verven",
+b4:"Laminatie",
+lashes:"Wimpers",
+l1:"Verven",
+l2:"Laminatie",
+ext:"Extensions",
+remove:"Verwijderen"
+},
+en:{
+btn:"WhatsApp booking",
+brows:"Brows",
+b1:"Correction",
+b2:"Tint",
+b3:"Correction + tint",
+b4:"Lamination",
+lashes:"Lashes",
+l1:"Tint",
+l2:"Lamination",
+ext:"Extensions",
+remove:"Removal"
+},
+ru:{
+btn:"Записаться в WhatsApp",
+brows:"Брови",
+b1:"Коррекция",
+b2:"Окрашивание",
+b3:"Коррекция + окрашивание",
+b4:"Ламинирование",
+lashes:"Ресницы",
+l1:"Окрашивание",
+l2:"Ламинирование",
+ext:"Наращивание",
+remove:"Снятие"
+},
+ua:{
+btn:"Запис у WhatsApp",
+brows:"Брови",
+b1:"Корекція",
+b2:"Фарбування",
+b3:"Корекція + фарбування",
+b4:"Ламінування",
+lashes:"Вії",
+l1:"Фарбування",
+l2:"Ламінування",
+ext:"Нарощування",
+remove:"Зняття"
+},
+pl:{
+btn:"Rezerwacja WhatsApp",
+brows:"Brwi",
+b1:"Regulacja",
+b2:"Farbowanie",
+b3:"Regulacja + farbowanie",
+b4:"Laminacja",
+lashes:"Rzęsy",
+l1:"Farbowanie",
+l2:"Laminacja",
+ext:"Przedłużanie",
+remove:"Usunięcie"
+}
+};
+
+document.getElementById("whatsapp").innerText = t[lang].btn;
+document.getElementById("browsTitle").innerText = t[lang].brows;
+document.getElementById("b1").innerText = t[lang].b1;
+document.getElementById("b2").innerText = t[lang].b2;
+document.getElementById("b3").innerText = t[lang].b3;
+document.getElementById("b4").innerText = t[lang].b4;
+document.getElementById("lashesTitle").innerText = t[lang].lashes;
+document.getElementById("l1").innerText = t[lang].l1;
+document.getElementById("l2").innerText = t[lang].l2;
+document.getElementById("extTitle").innerText = t[lang].ext;
+document.getElementById("remove").innerText = t[lang].remove;
+}
+</script>
 
 </body>
 </html>
