@@ -10,24 +10,45 @@ margin:0;
 font-family:Arial, sans-serif;
 background:#ffffff;
 color:#111;
-text-align:center;
+display:flex;
+justify-content:center;
 }
 
+/* ЧЕРНАЯ РАМКА */
 .container{
+width:100%;
+max-width:520px;
+border:3px solid black;
+border-radius:12px;
+margin:10px;
 padding:20px;
-max-width:500px;
-margin:auto;
+box-sizing:border-box;
+text-align:center;
+background:white;
 }
 
+/* ЛОГО */
 .logo{
 width:100%;
 border-radius:10px;
 margin-bottom:20px;
 }
 
+/* КНОПКА */
+.btn{
+display:block;
+background:black;
+color:white;
+padding:15px;
+text-decoration:none;
+border-radius:8px;
+margin:10px 0;
+font-size:18px;
+}
+
+/* ЯЗЫКИ */
 .lang-switch{
-margin-top:10px;
-text-align:center;
+margin:10px 0 20px;
 }
 
 .lang-switch button{
@@ -38,21 +59,22 @@ background:black;
 color:white;
 border-radius:6px;
 font-size:13px;
+cursor:pointer;
 }
 
+/* СЕКЦИИ */
 .section{
-background:white;
+background:#f7f7f7;
 padding:18px;
 margin-bottom:15px;
 border-radius:10px;
-box-shadow:0 4px 10px rgba(0,0,0,0.05);
 text-align:left;
 }
 
 .section h2{
 margin-top:0;
 font-size:18px;
-border-bottom:1px solid #eee;
+border-bottom:1px solid #ddd;
 padding-bottom:5px;
 }
 
@@ -63,21 +85,11 @@ margin:6px 0;
 font-size:15px;
 }
 
-.btn{
-display:block;
-background:black;
-color:white;
-padding:15px;
-text-decoration:none;
-border-radius:8px;
-margin:20px 0;
-font-size:18px;
-}
-
 .footer{
 font-size:14px;
 color:#555;
 margin-top:20px;
+text-align:center;
 }
 </style>
 </head>
@@ -85,10 +97,11 @@ margin-top:20px;
 <body>
 
 <div class="container">
+
 <img src="Logo.jpg" class="logo">
 
-<a class="btn" id="whatsapp" href="https://wa.me/380979516397">
-WhatsApp afspraak
+<a class="btn" id="waBtn" href="https://wa.me/380979516397">
+WHATSAPP
 </a>
 
 <div class="lang-switch">
@@ -108,17 +121,17 @@ WhatsApp afspraak
 </div>
 
 <div class="section">
-<h2 id="lashesTitle">Wimpers</h2>
+<h2 id="lashTitle">Wimpers</h2>
 <div class="price"><span id="l1">Verven</span><span>15€</span></div>
 <div class="price"><span id="l2">Laminatie</span><span>40€</span></div>
 </div>
 
 <div class="section">
 <h2 id="extTitle">Extensions</h2>
-<div class="price"><span>1:1</span><span>45€</span></div>
-<div class="price"><span>2D / 3D</span><span>50€</span></div>
-<div class="price"><span>4D–6D</span><span>60€</span></div>
-<div class="price"><span id="remove">Verwijderen</span><span>10€</span></div>
+<div class="price"><span id="e1">1:1</span><span>45€</span></div>
+<div class="price"><span id="e2">2D / 3D</span><span>50€</span></div>
+<div class="price"><span id="e3">4D–6D</span><span>60€</span></div>
+<div class="price"><span id="e4">Verwijderen</span><span>10€</span></div>
 </div>
 
 <div class="footer">
@@ -132,6 +145,7 @@ PLATAANSTRAAT 15 5801BM VENRAY<br>
 function setLang(lang){
 
 const t = {
+
 nl:{
 btn:"WhatsApp afspraak",
 brows:"Wenkbrauwen",
@@ -139,38 +153,41 @@ b1:"Correctie",
 b2:"Verven",
 b3:"Correctie + verven",
 b4:"Laminatie",
-lashes:"Wimpers",
+lash:"Wimpers",
 l1:"Verven",
 l2:"Laminatie",
 ext:"Extensions",
-remove:"Verwijderen"
+e4:"Verwijderen"
 },
+
 en:{
-btn:"WhatsApp booking",
+btn:"Book via WhatsApp",
 brows:"Brows",
 b1:"Correction",
-b2:"Tint",
+b2:"Tinting",
 b3:"Correction + tint",
 b4:"Lamination",
-lashes:"Lashes",
-l1:"Tint",
+lash:"Lashes",
+l1:"Tinting",
 l2:"Lamination",
 ext:"Extensions",
-remove:"Removal"
+e4:"Removal"
 },
+
 ru:{
-btn:"Записаться в WhatsApp",
+btn:"Запись в WhatsApp",
 brows:"Брови",
 b1:"Коррекция",
 b2:"Окрашивание",
 b3:"Коррекция + окрашивание",
 b4:"Ламинирование",
-lashes:"Ресницы",
+lash:"Ресницы",
 l1:"Окрашивание",
 l2:"Ламинирование",
 ext:"Наращивание",
-remove:"Снятие"
+e4:"Снятие"
 },
+
 ua:{
 btn:"Запис у WhatsApp",
 brows:"Брови",
@@ -178,12 +195,13 @@ b1:"Корекція",
 b2:"Фарбування",
 b3:"Корекція + фарбування",
 b4:"Ламінування",
-lashes:"Вії",
+lash:"Вії",
 l1:"Фарбування",
 l2:"Ламінування",
-ext:"Нарощування",
-remove:"Зняття"
+ext:"Нарощення",
+e4:"Зняття"
 },
+
 pl:{
 btn:"Rezerwacja WhatsApp",
 brows:"Brwi",
@@ -191,25 +209,27 @@ b1:"Regulacja",
 b2:"Farbowanie",
 b3:"Regulacja + farbowanie",
 b4:"Laminacja",
-lashes:"Rzęsy",
+lash:"Rzęsy",
 l1:"Farbowanie",
 l2:"Laminacja",
 ext:"Przedłużanie",
-remove:"Usunięcie"
+e4:"Usuwanie"
 }
+
 };
 
-document.getElementById("whatsapp").innerText = t[lang].btn;
+document.getElementById("waBtn").innerText = t[lang].btn;
 document.getElementById("browsTitle").innerText = t[lang].brows;
 document.getElementById("b1").innerText = t[lang].b1;
 document.getElementById("b2").innerText = t[lang].b2;
 document.getElementById("b3").innerText = t[lang].b3;
 document.getElementById("b4").innerText = t[lang].b4;
-document.getElementById("lashesTitle").innerText = t[lang].lashes;
+document.getElementById("lashTitle").innerText = t[lang].lash;
 document.getElementById("l1").innerText = t[lang].l1;
 document.getElementById("l2").innerText = t[lang].l2;
 document.getElementById("extTitle").innerText = t[lang].ext;
-document.getElementById("remove").innerText = t[lang].remove;
+document.getElementById("e4").innerText = t[lang].e4;
+
 }
 </script>
 
